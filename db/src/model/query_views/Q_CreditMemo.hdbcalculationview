@@ -1,0 +1,1734 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" id="Q_CREDITMEMO" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CREDIT ">
+  <comment text="NONE"/>
+</descriptions>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="B_BillingHdr">
+    <resourceUri>B_BillingHdr</resourceUri>
+  </DataSource>
+  <DataSource id="B_BillingItem">
+    <resourceUri>B_BillingItem</resourceUri>
+  </DataSource>
+  <DataSource id="D_SalesOrganization">
+    <resourceUri>D_SalesOrganization</resourceUri>
+  </DataSource>
+  <DataSource id="D_Material">
+    <resourceUri>D_Material</resourceUri>
+  </DataSource>
+  <DataSource id="D_MATGROUP_TEXT">
+    <resourceUri>D_MATGROUP_TEXT</resourceUri>
+  </DataSource>
+  <DataSource id="D_COMPANY_CODE">
+    <resourceUri>D_COMPANY_CODE</resourceUri>
+  </DataSource>
+  <DataSource id="D_BillingCategoryText">
+    <resourceUri>D_BillingCategoryText</resourceUri>
+  </DataSource>
+  <DataSource id="D_Customer">
+    <resourceUri>D_Customer</resourceUri>
+  </DataSource>
+  <DataSource id="Payer_P$$$$D_Customer$$">
+    <resourceUri>D_Customer</resourceUri>
+  </DataSource>
+  <DataSource id="Customer_P$$$$D_Customer$$">
+    <resourceUri>D_Customer</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="BillingHdr_P">
+    <viewAttributes>
+      <viewAttribute id="BillingDocument"/>
+      <viewAttribute id="CompanyCode"/>
+      <viewAttribute id="SalesDistrict"/>
+      <viewAttribute id="CreationDate"/>
+      <viewAttribute id="CreatedByUser"/>
+      <viewAttribute id="BillingDocumentType"/>
+      <viewAttribute id="InvoiceListBillingDate"/>
+      <viewAttribute id="BillingDocumentCategory"/>
+      <viewAttribute id="IncotermsClassification"/>
+      <viewAttribute id="IncotermsTransferLocation"/>
+      <viewAttribute id="CustomerGroup"/>
+      <viewAttribute id="SoldToParty"/>
+      <viewAttribute id="PayerParty"/>
+      <viewAttribute id="AccountingExchangeRate"/>
+      <viewAttribute id="ExchangeRateType"/>
+      <viewAttribute id="Division"/>
+      <viewAttribute id="StatisticsCurrency"/>
+      <viewAttribute id="SDDocumentCategory"/>
+      <viewAttribute id="SalesOrganization"/>
+      <viewAttribute id="DistributionChannel"/>
+      <viewAttribute id="TransactionCurrency"/></viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="B_BillingHdr"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="BillingItem_P">
+    <viewAttributes>
+      <viewAttribute id="HeaderBillingDocument"/>
+      <viewAttribute id="BillingDocumentItem"/>
+      <viewAttribute id="BillingQuantityUnit"/>
+      <viewAttribute id="BillingToBaseQuantityNumrtr"/>
+      <viewAttribute id="BillingToBaseQuantityDnmntr"/>
+      <viewAttribute id="BaseUnit"/>
+      <viewAttribute id="ItemWeightUnit"/>
+      <viewAttribute id="ItemVolumeUnit"/>
+      <viewAttribute id="PricingDate"/>
+      <viewAttribute id="ServicesRenderedDate"/>
+      <viewAttribute id="PriceDetnExchangeRate"/>
+      <viewAttribute id="ReferenceSDDocument"/>
+      <viewAttribute id="SalesDocument"/>
+      <viewAttribute id="SalesDocumentItem"/>
+      <viewAttribute id="Material"/>
+      <viewAttribute id="Batch"/>
+      <viewAttribute id="MaterialGroup"/>
+      <viewAttribute id="SalesDocumentItemCategory"/>
+      <viewAttribute id="SalesDocumentItemType"/>
+      <viewAttribute id="ProductHierarchyNode"/>
+      <viewAttribute id="RebateBasisAmount"/>
+      <viewAttribute id="ItemGrossWeight"/>
+      <viewAttribute id="ItemGrossAmountOfBillingDoc"/>
+      <viewAttribute id="BillingQuantity"/>
+      <viewAttribute id="BillingQuantityInBaseUnit"/>
+      <viewAttribute id="Subtotal1Amount"/>
+      <viewAttribute id="Subtotal2Amount"/>
+      <viewAttribute id="Subtotal3Amount"/>
+      <viewAttribute id="Subtotal4Amount"/>
+      <viewAttribute id="Subtotal5Amount"/>
+      <viewAttribute id="Subtotal6Amount"/>
+      <viewAttribute id="MRPRequiredQuantityInBaseUnit"/>
+      <viewAttribute id="TaxAmount"/>
+      <viewAttribute id="ItemNetAmountOfBillingDoc"/>
+      <viewAttribute id="ItemNetWeight"/>
+      <viewAttribute id="EligibleAmountForCashDiscount"/>
+      <viewAttribute id="CostAmount"/>
+      <viewAttribute id="PricingScaleQuantityInBaseUnit"/>
+      <viewAttribute id="ItemVolume"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="B_BillingItem">
+      <mapping xsi:type="Calculation:AttributeMapping" target="HeaderBillingDocument" source="BillingDocument"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="BillingDocument"/>
+      <viewAttribute id="BillingDocumentItem"/>
+      <viewAttribute id="BillingQuantityUnit"/>
+      <viewAttribute id="BillingToBaseQuantityNumrtr" aggregationType="sum"/>
+      <viewAttribute id="BillingToBaseQuantityDnmntr" aggregationType="sum"/>
+      <viewAttribute id="BaseUnit"/>
+      <viewAttribute id="ItemWeightUnit"/>
+      <viewAttribute id="ItemVolumeUnit"/>
+      <viewAttribute id="PricingDate"/>
+      <viewAttribute id="ServicesRenderedDate"/>
+      <viewAttribute id="PriceDetnExchangeRate" aggregationType="sum"/>
+      <viewAttribute id="ReferenceSDDocument"/>
+      <viewAttribute id="SalesDocument"/>
+      <viewAttribute id="SalesDocumentItem"/>
+      <viewAttribute id="Material"/>
+      <viewAttribute id="Batch"/>
+      <viewAttribute id="MaterialGroup"/>
+      <viewAttribute id="SalesDocumentItemCategory"/>
+      <viewAttribute id="SalesDocumentItemType"/>
+      <viewAttribute id="ProductHierarchyNode"/>
+      <viewAttribute id="RebateBasisAmount" aggregationType="sum"/>
+      <viewAttribute id="ItemGrossWeight" aggregationType="sum"/>
+      <viewAttribute id="ItemGrossAmountOfBillingDoc" aggregationType="sum"/>
+      <viewAttribute id="BillingQuantity" aggregationType="sum"/>
+      <viewAttribute id="BillingQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="Subtotal1Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal2Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal3Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal4Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal5Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal6Amount" aggregationType="sum"/>
+      <viewAttribute id="MRPRequiredQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="TaxAmount" aggregationType="sum"/>
+      <viewAttribute id="ItemNetAmountOfBillingDoc" aggregationType="sum"/>
+      <viewAttribute id="ItemNetWeight" aggregationType="sum"/>
+      <viewAttribute id="EligibleAmountForCashDiscount" aggregationType="sum"/>
+      <viewAttribute id="CostAmount" aggregationType="sum"/>
+      <viewAttribute id="PricingScaleQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="ItemVolume" aggregationType="sum"/>
+      <viewAttribute id="HeaderBillingDocument"/>
+      <viewAttribute id="CompanyCode"/>
+      <viewAttribute id="SalesDistrict"/>
+      <viewAttribute id="CreationDate"/>
+      <viewAttribute id="CreatedByUser"/>
+      <viewAttribute id="BillingDocumentType"/>
+      <viewAttribute id="InvoiceListBillingDate"/>
+      <viewAttribute id="BillingDocumentCategory"/>
+      <viewAttribute id="IncotermsClassification"/>
+      <viewAttribute id="IncotermsTransferLocation"/>
+      <viewAttribute id="CustomerGroup"/>
+      <viewAttribute id="SoldToParty"/>
+      <viewAttribute id="PayerParty"/>
+      <viewAttribute id="AccountingExchangeRate" aggregationType="sum"/>
+      <viewAttribute id="ExchangeRateType"/>
+      <viewAttribute id="Division"/>
+      <viewAttribute id="StatisticsCurrency"/>
+      <viewAttribute id="SDDocumentCategory"/>
+      <viewAttribute id="SalesOrganization"/>
+      <viewAttribute id="DistributionChannel"/>
+      <viewAttribute id="TransactionCurrency"/></viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="BillingItem_P">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocument" source="HeaderBillingDocument"/></input>
+    <input node="BillingHdr_P">
+      <mapping xsi:type="Calculation:AttributeMapping" target="HeaderBillingDocument" source="BillingDocument"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocument" source="BillingDocument"/>
+    </input>
+    <joinAttribute name="BillingDocument"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="SalesOrg_P">
+    <viewAttributes>
+      <viewAttribute id="SalesOrganization"/>
+      <viewAttribute id="SalesOrgCompanyCode"/>
+      <viewAttribute id="Customer"/>
+      <viewAttribute id="Country"/>
+      <viewAttribute id="FiscalYearVariant"/>
+      <viewAttribute id="SalesOrganizationCurrency"/>
+      <viewAttribute id="SalesOrganizationName"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="D_SalesOrganization">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrgCompanyCode" source="CompanyCode"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="CN_1" joinType="leftOuter" optimizeJoinColumns="true">
+    <viewAttributes>
+      <viewAttribute id="BillingDocument"/>
+      <viewAttribute id="BillingDocumentItem"/>
+      <viewAttribute id="BillingQuantityUnit"/>
+      <viewAttribute id="BillingToBaseQuantityNumrtr" aggregationType="sum"/>
+      <viewAttribute id="BillingToBaseQuantityDnmntr" aggregationType="sum"/>
+      <viewAttribute id="BaseUnit"/>
+      <viewAttribute id="ItemWeightUnit"/>
+      <viewAttribute id="ItemVolumeUnit"/>
+      <viewAttribute id="PricingDate"/>
+      <viewAttribute id="ServicesRenderedDate"/>
+      <viewAttribute id="PriceDetnExchangeRate" aggregationType="sum"/>
+      <viewAttribute id="ReferenceSDDocument"/>
+      <viewAttribute id="SalesDocument"/>
+      <viewAttribute id="SalesDocumentItem"/>
+      <viewAttribute id="Material"/>
+      <viewAttribute id="Batch"/>
+      <viewAttribute id="MaterialGroup"/>
+      <viewAttribute id="SalesDocumentItemCategory"/>
+      <viewAttribute id="SalesDocumentItemType"/>
+      <viewAttribute id="ProductHierarchyNode"/>
+      <viewAttribute id="RebateBasisAmount" aggregationType="sum"/>
+      <viewAttribute id="ItemGrossWeight" aggregationType="sum"/>
+      <viewAttribute id="ItemGrossAmountOfBillingDoc" aggregationType="sum"/>
+      <viewAttribute id="BillingQuantity" aggregationType="sum"/>
+      <viewAttribute id="BillingQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="Subtotal1Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal2Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal3Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal4Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal5Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal6Amount" aggregationType="sum"/>
+      <viewAttribute id="MRPRequiredQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="TaxAmount" aggregationType="sum"/>
+      <viewAttribute id="ItemNetAmountOfBillingDoc" aggregationType="sum"/>
+      <viewAttribute id="ItemNetWeight" aggregationType="sum"/>
+      <viewAttribute id="EligibleAmountForCashDiscount" aggregationType="sum"/>
+      <viewAttribute id="CostAmount" aggregationType="sum"/>
+      <viewAttribute id="PricingScaleQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="ItemVolume" aggregationType="sum"/>
+      <viewAttribute id="HeaderBillingDocument"/>
+      <viewAttribute id="CompanyCode"/>
+      <viewAttribute id="SalesDistrict"/>
+      <viewAttribute id="CreationDate"/>
+      <viewAttribute id="CreatedByUser"/>
+      <viewAttribute id="BillingDocumentType"/>
+      <viewAttribute id="InvoiceListBillingDate"/>
+      <viewAttribute id="BillingDocumentCategory"/>
+      <viewAttribute id="IncotermsClassification"/>
+      <viewAttribute id="IncotermsTransferLocation"/>
+      <viewAttribute id="CustomerGroup"/>
+      <viewAttribute id="SoldToParty"/>
+      <viewAttribute id="PayerParty"/>
+      <viewAttribute id="AccountingExchangeRate" aggregationType="sum"/>
+      <viewAttribute id="ExchangeRateType"/>
+      <viewAttribute id="Division"/>
+      <viewAttribute id="StatisticsCurrency"/>
+      <viewAttribute id="SDDocumentCategory"/>
+      <viewAttribute id="SalesOrganization"/>
+      <viewAttribute id="DistributionChannel"/>
+      <viewAttribute id="TransactionCurrency"/>
+      <viewAttribute id="SalesOrgCompCode"/>
+      <viewAttribute id="Customer"/>
+      <viewAttribute id="Country"/>
+      <viewAttribute id="FiscalYearVariant"/>
+      <viewAttribute id="SalesOrganizationCurrency"/>
+      <viewAttribute id="SalesOrganizationName"/>
+      <viewAttribute id="SalesOrganization_1"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganization" source="SalesOrganization"/></input>
+    <input node="SalesOrg_P">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrgCompCode" source="SalesOrgCompanyCode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganization_1" source="SalesOrganization"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SalesOrganization" source="SalesOrganization"/>
+    </input>
+    <joinAttribute name="SalesOrganization"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Material_P">
+    <viewAttributes>
+      <viewAttribute id="Material"/>
+      <viewAttribute id="MaterialType"/>
+      <viewAttribute id="MaterialGroup"/>
+      <viewAttribute id="MaterialBaseUnit"/>
+      <viewAttribute id="ProductHierarchy"/>
+      <viewAttribute id="MaterialCategory"/>
+      <viewAttribute id="MaterialName"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="D_Material"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_3" cardinality="CN_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="BillingDocument"/>
+      <viewAttribute id="BillingDocumentItem"/>
+      <viewAttribute id="BillingQuantityUnit"/>
+      <viewAttribute id="BillingToBaseQuantityNumrtr" aggregationType="sum"/>
+      <viewAttribute id="BillingToBaseQuantityDnmntr" aggregationType="sum"/>
+      <viewAttribute id="BaseUnit"/>
+      <viewAttribute id="ItemWeightUnit"/>
+      <viewAttribute id="ItemVolumeUnit"/>
+      <viewAttribute id="PricingDate"/>
+      <viewAttribute id="ServicesRenderedDate"/>
+      <viewAttribute id="PriceDetnExchangeRate" aggregationType="sum"/>
+      <viewAttribute id="ReferenceSDDocument"/>
+      <viewAttribute id="SalesDocument"/>
+      <viewAttribute id="SalesDocumentItem"/>
+      <viewAttribute id="Material"/>
+      <viewAttribute id="Batch"/>
+      <viewAttribute id="MaterialGroup"/>
+      <viewAttribute id="SalesDocumentItemCategory"/>
+      <viewAttribute id="SalesDocumentItemType"/>
+      <viewAttribute id="ProductHierarchyNode"/>
+      <viewAttribute id="RebateBasisAmount" aggregationType="sum"/>
+      <viewAttribute id="ItemGrossWeight" aggregationType="sum"/>
+      <viewAttribute id="ItemGrossAmountOfBillingDoc" aggregationType="sum"/>
+      <viewAttribute id="BillingQuantity" aggregationType="sum"/>
+      <viewAttribute id="BillingQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="Subtotal1Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal2Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal3Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal4Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal5Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal6Amount" aggregationType="sum"/>
+      <viewAttribute id="MRPRequiredQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="TaxAmount" aggregationType="sum"/>
+      <viewAttribute id="ItemNetAmountOfBillingDoc" aggregationType="sum"/>
+      <viewAttribute id="ItemNetWeight" aggregationType="sum"/>
+      <viewAttribute id="EligibleAmountForCashDiscount" aggregationType="sum"/>
+      <viewAttribute id="CostAmount" aggregationType="sum"/>
+      <viewAttribute id="PricingScaleQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="ItemVolume" aggregationType="sum"/>
+      <viewAttribute id="HeaderBillingDocument"/>
+      <viewAttribute id="CompanyCode"/>
+      <viewAttribute id="SalesDistrict"/>
+      <viewAttribute id="CreationDate"/>
+      <viewAttribute id="CreatedByUser"/>
+      <viewAttribute id="BillingDocumentType"/>
+      <viewAttribute id="InvoiceListBillingDate"/>
+      <viewAttribute id="BillingDocumentCategory"/>
+      <viewAttribute id="IncotermsClassification"/>
+      <viewAttribute id="IncotermsTransferLocation"/>
+      <viewAttribute id="CustomerGroup"/>
+      <viewAttribute id="SoldToParty"/>
+      <viewAttribute id="PayerParty"/>
+      <viewAttribute id="AccountingExchangeRate" aggregationType="sum"/>
+      <viewAttribute id="ExchangeRateType"/>
+      <viewAttribute id="Division"/>
+      <viewAttribute id="StatisticsCurrency"/>
+      <viewAttribute id="SDDocumentCategory"/>
+      <viewAttribute id="SalesOrganization"/>
+      <viewAttribute id="DistributionChannel"/>
+      <viewAttribute id="TransactionCurrency"/>
+      <viewAttribute id="SalesOrgCompCode"/>
+      <viewAttribute id="Customer"/>
+      <viewAttribute id="Country"/>
+      <viewAttribute id="FiscalYearVariant"/>
+      <viewAttribute id="SalesOrganizationCurrency"/>
+      <viewAttribute id="SalesOrganizationName"/>
+      <viewAttribute id="SalesOrganization_1"/>
+      <viewAttribute id="Material_1"/>
+      <viewAttribute id="MaterialType"/>
+      <viewAttribute id="MaterialGroup_1"/>
+      <viewAttribute id="MaterialBaseUnit"/>
+      <viewAttribute id="ProductHierarchy"/>
+      <viewAttribute id="MaterialCategory"/>
+      <viewAttribute id="MaterialName"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Material" source="Material"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialGroup" source="MaterialGroup"/></input>
+    <input node="Material_P">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Material_1" source="Material"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialGroup_1" source="MaterialGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Material" source="Material"/>
+    </input>
+    <joinAttribute name="Material"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_4" cardinality="CN_1" joinType="leftOuter" optimizeJoinColumns="true">
+    <viewAttributes>
+      <viewAttribute id="BillingDocument"/>
+      <viewAttribute id="BillingDocumentItem"/>
+      <viewAttribute id="BillingQuantityUnit"/>
+      <viewAttribute id="BillingToBaseQuantityNumrtr" aggregationType="sum"/>
+      <viewAttribute id="BillingToBaseQuantityDnmntr" aggregationType="sum"/>
+      <viewAttribute id="BaseUnit"/>
+      <viewAttribute id="ItemWeightUnit"/>
+      <viewAttribute id="ItemVolumeUnit"/>
+      <viewAttribute id="PricingDate"/>
+      <viewAttribute id="ServicesRenderedDate"/>
+      <viewAttribute id="PriceDetnExchangeRate" aggregationType="sum"/>
+      <viewAttribute id="ReferenceSDDocument"/>
+      <viewAttribute id="SalesDocument"/>
+      <viewAttribute id="SalesDocumentItem"/>
+      <viewAttribute id="Material"/>
+      <viewAttribute id="Batch"/>
+      <viewAttribute id="MaterialGroup"/>
+      <viewAttribute id="SalesDocumentItemCategory"/>
+      <viewAttribute id="SalesDocumentItemType"/>
+      <viewAttribute id="ProductHierarchyNode"/>
+      <viewAttribute id="RebateBasisAmount" aggregationType="sum"/>
+      <viewAttribute id="ItemGrossWeight" aggregationType="sum"/>
+      <viewAttribute id="ItemGrossAmountOfBillingDoc" aggregationType="sum"/>
+      <viewAttribute id="BillingQuantity" aggregationType="sum"/>
+      <viewAttribute id="BillingQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="Subtotal1Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal2Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal3Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal4Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal5Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal6Amount" aggregationType="sum"/>
+      <viewAttribute id="MRPRequiredQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="TaxAmount" aggregationType="sum"/>
+      <viewAttribute id="ItemNetAmountOfBillingDoc" aggregationType="sum"/>
+      <viewAttribute id="ItemNetWeight" aggregationType="sum"/>
+      <viewAttribute id="EligibleAmountForCashDiscount" aggregationType="sum"/>
+      <viewAttribute id="CostAmount" aggregationType="sum"/>
+      <viewAttribute id="PricingScaleQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="ItemVolume" aggregationType="sum"/>
+      <viewAttribute id="HeaderBillingDocument"/>
+      <viewAttribute id="CompanyCode"/>
+      <viewAttribute id="SalesDistrict"/>
+      <viewAttribute id="CreationDate"/>
+      <viewAttribute id="CreatedByUser"/>
+      <viewAttribute id="BillingDocumentType"/>
+      <viewAttribute id="InvoiceListBillingDate"/>
+      <viewAttribute id="BillingDocumentCategory"/>
+      <viewAttribute id="IncotermsClassification"/>
+      <viewAttribute id="IncotermsTransferLocation"/>
+      <viewAttribute id="CustomerGroup"/>
+      <viewAttribute id="SoldToParty"/>
+      <viewAttribute id="PayerParty"/>
+      <viewAttribute id="AccountingExchangeRate" aggregationType="sum"/>
+      <viewAttribute id="ExchangeRateType"/>
+      <viewAttribute id="Division"/>
+      <viewAttribute id="StatisticsCurrency"/>
+      <viewAttribute id="SDDocumentCategory"/>
+      <viewAttribute id="SalesOrganization"/>
+      <viewAttribute id="DistributionChannel"/>
+      <viewAttribute id="TransactionCurrency"/>
+      <viewAttribute id="SalesOrgCompCode"/>
+      <viewAttribute id="Customer"/>
+      <viewAttribute id="Country"/>
+      <viewAttribute id="FiscalYearVariant"/>
+      <viewAttribute id="SalesOrganizationCurrency"/>
+      <viewAttribute id="SalesOrganizationName"/>
+      <viewAttribute id="SalesOrganization_1"/>
+      <viewAttribute id="Material_1"/>
+      <viewAttribute id="MaterialType"/>
+      <viewAttribute id="MaterialGroup_1"/>
+      <viewAttribute id="MaterialBaseUnit"/>
+      <viewAttribute id="ProductHierarchy"/>
+      <viewAttribute id="MaterialCategory"/>
+      <viewAttribute id="MaterialName"/>
+      <viewAttribute id="MaterialGroupText"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_3">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialGroup" source="MaterialGroup"/>
+    </input>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialGroup" source="MaterialGroup"/>
+    </input>
+    <joinAttribute name="MaterialGroup"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+    
+      <viewAttribute id="MaterialGroup"/>
+      <viewAttribute id="MaterialGroupText"/></viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="D_MATGROUP_TEXT"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="COMPCODE_P">
+    <viewAttributes>
+      <viewAttribute id="CompanyCode"/>
+      <viewAttribute id="Country"/>
+      <viewAttribute id="Currency"/>
+      <viewAttribute id="ChartOfAccounts"/>
+      <viewAttribute id="CreditControlArea"/>
+      <viewAttribute id="FiscalYearVariant"/>
+      <viewAttribute id="Company"/>
+      <viewAttribute id="CompanyCodeName"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="D_COMPANY_CODE"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_5" cardinality="CN_1" joinType="leftOuter" optimizeJoinColumns="true">
+    <viewAttributes>
+      <viewAttribute id="BillingDocument"/>
+      <viewAttribute id="BillingDocumentItem"/>
+      <viewAttribute id="BillingQuantityUnit"/>
+      <viewAttribute id="BillingToBaseQuantityNumrtr" aggregationType="sum"/>
+      <viewAttribute id="BillingToBaseQuantityDnmntr" aggregationType="sum"/>
+      <viewAttribute id="BaseUnit"/>
+      <viewAttribute id="ItemWeightUnit"/>
+      <viewAttribute id="ItemVolumeUnit"/>
+      <viewAttribute id="PricingDate"/>
+      <viewAttribute id="ServicesRenderedDate"/>
+      <viewAttribute id="PriceDetnExchangeRate" aggregationType="sum"/>
+      <viewAttribute id="ReferenceSDDocument"/>
+      <viewAttribute id="SalesDocument"/>
+      <viewAttribute id="SalesDocumentItem"/>
+      <viewAttribute id="Material"/>
+      <viewAttribute id="Batch"/>
+      <viewAttribute id="MaterialGroup"/>
+      <viewAttribute id="SalesDocumentItemCategory"/>
+      <viewAttribute id="SalesDocumentItemType"/>
+      <viewAttribute id="ProductHierarchyNode"/>
+      <viewAttribute id="RebateBasisAmount" aggregationType="sum"/>
+      <viewAttribute id="ItemGrossWeight" aggregationType="sum"/>
+      <viewAttribute id="ItemGrossAmountOfBillingDoc" aggregationType="sum"/>
+      <viewAttribute id="BillingQuantity" aggregationType="sum"/>
+      <viewAttribute id="BillingQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="Subtotal1Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal2Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal3Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal4Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal5Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal6Amount" aggregationType="sum"/>
+      <viewAttribute id="MRPRequiredQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="TaxAmount" aggregationType="sum"/>
+      <viewAttribute id="ItemNetAmountOfBillingDoc" aggregationType="sum"/>
+      <viewAttribute id="ItemNetWeight" aggregationType="sum"/>
+      <viewAttribute id="EligibleAmountForCashDiscount" aggregationType="sum"/>
+      <viewAttribute id="CostAmount" aggregationType="sum"/>
+      <viewAttribute id="PricingScaleQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="ItemVolume" aggregationType="sum"/>
+      <viewAttribute id="BillingDocument_1"/>
+      <viewAttribute id="CompanyCode"/>
+      <viewAttribute id="SalesDistrict"/>
+      <viewAttribute id="CreationDate"/>
+      <viewAttribute id="CreatedByUser"/>
+      <viewAttribute id="BillingDocumentType"/>
+      <viewAttribute id="InvoiceListBillingDate"/>
+      <viewAttribute id="BillingDocumentCategory"/>
+      <viewAttribute id="IncotermsClassification"/>
+      <viewAttribute id="IncotermsTransferLocation"/>
+      <viewAttribute id="CustomerGroup"/>
+      <viewAttribute id="SoldToParty"/>
+      <viewAttribute id="PayerParty"/>
+      <viewAttribute id="AccountingExchangeRate" aggregationType="sum"/>
+      <viewAttribute id="ExchangeRateType"/>
+      <viewAttribute id="Division"/>
+      <viewAttribute id="StatisticsCurrency"/>
+      <viewAttribute id="SDDocumentCategory"/>
+      <viewAttribute id="SalesOrganization"/>
+      <viewAttribute id="DistributionChannel"/>
+      <viewAttribute id="TransactionCurrency"/>
+      <viewAttribute id="SalesOrgCompCode"/>
+      <viewAttribute id="Customer"/>
+      <viewAttribute id="Country"/>
+      <viewAttribute id="FiscalYearVariant"/>
+      <viewAttribute id="SalesOrganizationCurrency"/>
+      <viewAttribute id="SalesOrganizationName"/>
+      <viewAttribute id="SalesOrganization_1"/>
+      <viewAttribute id="Material_1"/>
+      <viewAttribute id="MaterialType"/>
+      <viewAttribute id="MaterialGroup_1"/>
+      <viewAttribute id="MaterialBaseUnit"/>
+      <viewAttribute id="ProductHierarchy"/>
+      <viewAttribute id="MaterialCategory"/>
+      <viewAttribute id="MaterialName"/>
+      <viewAttribute id="CompanyCode_1"/>
+      <viewAttribute id="Country_1"/>
+      <viewAttribute id="Currency"/>
+      <viewAttribute id="ChartOfAccounts"/>
+      <viewAttribute id="CreditControlArea"/>
+      <viewAttribute id="FiscalYearVariant_1"/>
+      <viewAttribute id="Company"/>
+      <viewAttribute id="CompanyCodeName"/>
+    
+      <viewAttribute id="MaterialGroupText"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_4">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompanyCode" source="CompanyCode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Country" source="Country"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FiscalYearVariant" source="FiscalYearVariant"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocument_1" source="HeaderBillingDocument"/>
+    </input>
+    <input node="COMPCODE_P">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompanyCode_1" source="CompanyCode"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Country_1" source="Country"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FiscalYearVariant_1" source="FiscalYearVariant"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompanyCode" source="CompanyCode"/>
+    </input>
+    <joinAttribute name="CompanyCode"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="BillingCategory_P">
+    <viewAttributes>
+      <viewAttribute id="LANGU"/>
+      <viewAttribute id="KEY1"/>
+      <viewAttribute id="BillingCategoryText"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="D_BillingCategoryText"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_6" cardinality="CN_1" joinType="leftOuter" languageColumn="LANGU">
+    <viewAttributes>
+      <viewAttribute id="BillingDocument"/>
+      <viewAttribute id="BillingDocumentItem"/>
+      <viewAttribute id="BillingQuantityUnit"/>
+      <viewAttribute id="BillingToBaseQuantityNumrtr" aggregationType="sum"/>
+      <viewAttribute id="BillingToBaseQuantityDnmntr" aggregationType="sum"/>
+      <viewAttribute id="BaseUnit"/>
+      <viewAttribute id="ItemWeightUnit"/>
+      <viewAttribute id="ItemVolumeUnit"/>
+      <viewAttribute id="PricingDate"/>
+      <viewAttribute id="ServicesRenderedDate"/>
+      <viewAttribute id="PriceDetnExchangeRate" aggregationType="sum"/>
+      <viewAttribute id="ReferenceSDDocument"/>
+      <viewAttribute id="SalesDocument"/>
+      <viewAttribute id="SalesDocumentItem"/>
+      <viewAttribute id="Material"/>
+      <viewAttribute id="Batch"/>
+      <viewAttribute id="MaterialGroup"/>
+      <viewAttribute id="SalesDocumentItemCategory"/>
+      <viewAttribute id="SalesDocumentItemType"/>
+      <viewAttribute id="ProductHierarchyNode"/>
+      <viewAttribute id="RebateBasisAmount" aggregationType="sum"/>
+      <viewAttribute id="ItemGrossWeight" aggregationType="sum"/>
+      <viewAttribute id="ItemGrossAmountOfBillingDoc" aggregationType="sum"/>
+      <viewAttribute id="BillingQuantity" aggregationType="sum"/>
+      <viewAttribute id="BillingQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="Subtotal1Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal2Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal3Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal4Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal5Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal6Amount" aggregationType="sum"/>
+      <viewAttribute id="MRPRequiredQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="TaxAmount" aggregationType="sum"/>
+      <viewAttribute id="ItemNetAmountOfBillingDoc" aggregationType="sum"/>
+      <viewAttribute id="ItemNetWeight" aggregationType="sum"/>
+      <viewAttribute id="EligibleAmountForCashDiscount" aggregationType="sum"/>
+      <viewAttribute id="CostAmount" aggregationType="sum"/>
+      <viewAttribute id="PricingScaleQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="ItemVolume" aggregationType="sum"/>
+      <viewAttribute id="BillingDocument_1"/>
+      <viewAttribute id="CompanyCode"/>
+      <viewAttribute id="SalesDistrict"/>
+      <viewAttribute id="CreationDate"/>
+      <viewAttribute id="CreatedByUser"/>
+      <viewAttribute id="BillingDocumentType"/>
+      <viewAttribute id="InvoiceListBillingDate"/>
+      <viewAttribute id="BillingDocumentCategory"/>
+      <viewAttribute id="IncotermsClassification"/>
+      <viewAttribute id="IncotermsTransferLocation"/>
+      <viewAttribute id="CustomerGroup"/>
+      <viewAttribute id="SoldToParty"/>
+      <viewAttribute id="PayerParty"/>
+      <viewAttribute id="AccountingExchangeRate" aggregationType="sum"/>
+      <viewAttribute id="ExchangeRateType"/>
+      <viewAttribute id="Division"/>
+      <viewAttribute id="StatisticsCurrency"/>
+      <viewAttribute id="SDDocumentCategory"/>
+      <viewAttribute id="SalesOrganization"/>
+      <viewAttribute id="DistributionChannel"/>
+      <viewAttribute id="TransactionCurrency"/>
+      <viewAttribute id="SalesOrgCompCode"/>
+      <viewAttribute id="Customer"/>
+      <viewAttribute id="Country"/>
+      <viewAttribute id="FiscalYearVariant"/>
+      <viewAttribute id="SalesOrganizationCurrency"/>
+      <viewAttribute id="SalesOrganizationName"/>
+      <viewAttribute id="SalesOrganization_1"/>
+      <viewAttribute id="Material_1"/>
+      <viewAttribute id="MaterialType"/>
+      <viewAttribute id="MaterialGroup_1"/>
+      <viewAttribute id="MaterialBaseUnit"/>
+      <viewAttribute id="ProductHierarchy"/>
+      <viewAttribute id="MaterialCategory"/>
+      <viewAttribute id="MaterialName"/>
+      <viewAttribute id="CompanyCode_1"/>
+      <viewAttribute id="Country_1"/>
+      <viewAttribute id="Currency"/>
+      <viewAttribute id="ChartOfAccounts"/>
+      <viewAttribute id="CreditControlArea"/>
+      <viewAttribute id="FiscalYearVariant_1"/>
+      <viewAttribute id="Company"/>
+      <viewAttribute id="CompanyCodeName"/>
+      <viewAttribute id="MaterialGroupText"/>
+      <viewAttribute id="BillingCategoryText"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_5">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentCategory" source="BillingDocumentCategory"/></input>
+    <input node="BillingCategory_P">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BillingDocumentCategory" source="KEY1"/>
+    </input>
+    <joinAttribute name="BillingDocumentCategory"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="SoldTo_P">
+    <viewAttributes>
+      <viewAttribute id="CustomerNumberSoldTo"/>
+      <viewAttribute id="SoldToAddress"/>
+      <viewAttribute id="SoldToCountry"/>
+      <viewAttribute id="SoldToRegion"/>
+      <viewAttribute id="SoldToCustomerAccountGroup"/>
+      <viewAttribute id="SoldToCity"/>
+      <viewAttribute id="SoldToCustomerName"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="D_Customer">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerNumberSoldTo" source="CustomerNumber"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToAddress" source="Address"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToCountry" source="Country"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToRegion" source="Region"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToCustomerAccountGroup" source="CustomerAccountGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToCity" source="City"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToCustomerName" source="CustomerName"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_7" cardinality="CN_1" joinType="leftOuter" optimizeJoinColumns="true">
+    <viewAttributes>
+      <viewAttribute id="BillingDocument"/>
+      <viewAttribute id="BillingDocumentItem"/>
+      <viewAttribute id="BillingQuantityUnit"/>
+      <viewAttribute id="BillingToBaseQuantityNumrtr" aggregationType="sum"/>
+      <viewAttribute id="BillingToBaseQuantityDnmntr" aggregationType="sum"/>
+      <viewAttribute id="BaseUnit"/>
+      <viewAttribute id="ItemWeightUnit"/>
+      <viewAttribute id="ItemVolumeUnit"/>
+      <viewAttribute id="PricingDate"/>
+      <viewAttribute id="ServicesRenderedDate"/>
+      <viewAttribute id="PriceDetnExchangeRate" aggregationType="sum"/>
+      <viewAttribute id="ReferenceSDDocument"/>
+      <viewAttribute id="SalesDocument"/>
+      <viewAttribute id="SalesDocumentItem"/>
+      <viewAttribute id="Material"/>
+      <viewAttribute id="Batch"/>
+      <viewAttribute id="MaterialGroup"/>
+      <viewAttribute id="SalesDocumentItemCategory"/>
+      <viewAttribute id="SalesDocumentItemType"/>
+      <viewAttribute id="ProductHierarchyNode"/>
+      <viewAttribute id="RebateBasisAmount" aggregationType="sum"/>
+      <viewAttribute id="ItemGrossWeight" aggregationType="sum"/>
+      <viewAttribute id="ItemGrossAmountOfBillingDoc" aggregationType="sum"/>
+      <viewAttribute id="BillingQuantity" aggregationType="sum"/>
+      <viewAttribute id="BillingQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="Subtotal1Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal2Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal3Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal4Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal5Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal6Amount" aggregationType="sum"/>
+      <viewAttribute id="MRPRequiredQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="TaxAmount" aggregationType="sum"/>
+      <viewAttribute id="ItemNetAmountOfBillingDoc" aggregationType="sum"/>
+      <viewAttribute id="ItemNetWeight" aggregationType="sum"/>
+      <viewAttribute id="EligibleAmountForCashDiscount" aggregationType="sum"/>
+      <viewAttribute id="CostAmount" aggregationType="sum"/>
+      <viewAttribute id="PricingScaleQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="ItemVolume" aggregationType="sum"/>
+      <viewAttribute id="BillingDocument_1"/>
+      <viewAttribute id="CompanyCode"/>
+      <viewAttribute id="SalesDistrict"/>
+      <viewAttribute id="CreationDate"/>
+      <viewAttribute id="CreatedByUser"/>
+      <viewAttribute id="BillingDocumentType"/>
+      <viewAttribute id="InvoiceListBillingDate"/>
+      <viewAttribute id="BillingDocumentCategory"/>
+      <viewAttribute id="IncotermsClassification"/>
+      <viewAttribute id="IncotermsTransferLocation"/>
+      <viewAttribute id="CustomerGroup"/>
+      <viewAttribute id="SoldToParty"/>
+      <viewAttribute id="PayerParty"/>
+      <viewAttribute id="AccountingExchangeRate" aggregationType="sum"/>
+      <viewAttribute id="ExchangeRateType"/>
+      <viewAttribute id="Division"/>
+      <viewAttribute id="StatisticsCurrency"/>
+      <viewAttribute id="SDDocumentCategory"/>
+      <viewAttribute id="SalesOrganization"/>
+      <viewAttribute id="DistributionChannel"/>
+      <viewAttribute id="TransactionCurrency"/>
+      <viewAttribute id="SalesOrgCompCode"/>
+      <viewAttribute id="Customer"/>
+      <viewAttribute id="Country"/>
+      <viewAttribute id="FiscalYearVariant"/>
+      <viewAttribute id="SalesOrganizationCurrency"/>
+      <viewAttribute id="SalesOrganizationName"/>
+      <viewAttribute id="SalesOrganization_1"/>
+      <viewAttribute id="Material_1"/>
+      <viewAttribute id="MaterialType"/>
+      <viewAttribute id="MaterialGroup_1"/>
+      <viewAttribute id="MaterialBaseUnit"/>
+      <viewAttribute id="ProductHierarchy"/>
+      <viewAttribute id="MaterialCategory"/>
+      <viewAttribute id="MaterialName"/>
+      <viewAttribute id="CompanyCode_1"/>
+      <viewAttribute id="Country_1"/>
+      <viewAttribute id="Currency"/>
+      <viewAttribute id="ChartOfAccounts"/>
+      <viewAttribute id="CreditControlArea"/>
+      <viewAttribute id="FiscalYearVariant_1"/>
+      <viewAttribute id="Company"/>
+      <viewAttribute id="CompanyCodeName"/>
+      <viewAttribute id="MaterialGroupText"/>
+      <viewAttribute id="BillingCategoryText"/>
+      <viewAttribute id="CustomerNumberSoldTo"/>
+      <viewAttribute id="SoldToAddress"/>
+      <viewAttribute id="SoldToCountry"/>
+      <viewAttribute id="SoldToRegion"/>
+      <viewAttribute id="SoldToCustomerAccountGroup"/>
+      <viewAttribute id="SoldToCity"/>
+      <viewAttribute id="SoldToCustomerName"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_6">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToParty" source="SoldToParty"/></input>
+    <input node="SoldTo_P">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerNumberSoldTo" source="CustomerNumberSoldTo"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SoldToParty" source="CustomerNumberSoldTo"/>
+    </input>
+    <joinAttribute name="SoldToParty"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Payer_P">
+    <viewAttributes>
+      <viewAttribute id="PayerCustomerNumber"/>
+      <viewAttribute id="PayerAddress"/>
+      <viewAttribute id="PayerCountry"/>
+      <viewAttribute id="PayerRegion"/>
+      <viewAttribute id="PayerCity"/>
+      <viewAttribute id="PayerCustomerName"/>
+      <viewAttribute id="PayerCustomerAccountGroup"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Payer_P$$$$D_Customer$$">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerCustomerNumber" source="CustomerNumber"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerAddress" source="Address"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerCountry" source="Country"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerRegion" source="Region"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerCity" source="City"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerCustomerName" source="CustomerName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerCustomerAccountGroup" source="CustomerAccountGroup"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_8" cardinality="CN_1" joinType="leftOuter" optimizeJoinColumns="true">
+    <viewAttributes>
+      <viewAttribute id="BillingDocument"/>
+      <viewAttribute id="BillingDocumentItem"/>
+      <viewAttribute id="BillingQuantityUnit"/>
+      <viewAttribute id="BillingToBaseQuantityNumrtr" aggregationType="sum"/>
+      <viewAttribute id="BillingToBaseQuantityDnmntr" aggregationType="sum"/>
+      <viewAttribute id="BaseUnit"/>
+      <viewAttribute id="ItemWeightUnit"/>
+      <viewAttribute id="ItemVolumeUnit"/>
+      <viewAttribute id="PricingDate"/>
+      <viewAttribute id="ServicesRenderedDate"/>
+      <viewAttribute id="PriceDetnExchangeRate" aggregationType="sum"/>
+      <viewAttribute id="ReferenceSDDocument"/>
+      <viewAttribute id="SalesDocument"/>
+      <viewAttribute id="SalesDocumentItem"/>
+      <viewAttribute id="Material"/>
+      <viewAttribute id="Batch"/>
+      <viewAttribute id="MaterialGroup"/>
+      <viewAttribute id="SalesDocumentItemCategory"/>
+      <viewAttribute id="SalesDocumentItemType"/>
+      <viewAttribute id="ProductHierarchyNode"/>
+      <viewAttribute id="RebateBasisAmount" aggregationType="sum"/>
+      <viewAttribute id="ItemGrossWeight" aggregationType="sum"/>
+      <viewAttribute id="ItemGrossAmountOfBillingDoc" aggregationType="sum"/>
+      <viewAttribute id="BillingQuantity" aggregationType="sum"/>
+      <viewAttribute id="BillingQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="Subtotal1Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal2Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal3Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal4Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal5Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal6Amount" aggregationType="sum"/>
+      <viewAttribute id="MRPRequiredQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="TaxAmount" aggregationType="sum"/>
+      <viewAttribute id="ItemNetAmountOfBillingDoc" aggregationType="sum"/>
+      <viewAttribute id="ItemNetWeight" aggregationType="sum"/>
+      <viewAttribute id="EligibleAmountForCashDiscount" aggregationType="sum"/>
+      <viewAttribute id="CostAmount" aggregationType="sum"/>
+      <viewAttribute id="PricingScaleQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="ItemVolume" aggregationType="sum"/>
+      <viewAttribute id="BillingDocument_1"/>
+      <viewAttribute id="CompanyCode"/>
+      <viewAttribute id="SalesDistrict"/>
+      <viewAttribute id="CreationDate"/>
+      <viewAttribute id="CreatedByUser"/>
+      <viewAttribute id="BillingDocumentType"/>
+      <viewAttribute id="InvoiceListBillingDate"/>
+      <viewAttribute id="BillingDocumentCategory"/>
+      <viewAttribute id="IncotermsClassification"/>
+      <viewAttribute id="IncotermsTransferLocation"/>
+      <viewAttribute id="CustomerGroup"/>
+      <viewAttribute id="SoldToParty"/>
+      <viewAttribute id="PayerParty"/>
+      <viewAttribute id="AccountingExchangeRate" aggregationType="sum"/>
+      <viewAttribute id="ExchangeRateType"/>
+      <viewAttribute id="Division"/>
+      <viewAttribute id="StatisticsCurrency"/>
+      <viewAttribute id="SDDocumentCategory"/>
+      <viewAttribute id="SalesOrganization"/>
+      <viewAttribute id="DistributionChannel"/>
+      <viewAttribute id="TransactionCurrency"/>
+      <viewAttribute id="SalesOrgCompCode"/>
+      <viewAttribute id="Customer"/>
+      <viewAttribute id="Country"/>
+      <viewAttribute id="FiscalYearVariant"/>
+      <viewAttribute id="SalesOrganizationCurrency"/>
+      <viewAttribute id="SalesOrganizationName"/>
+      <viewAttribute id="SalesOrganization_1"/>
+      <viewAttribute id="Material_1"/>
+      <viewAttribute id="MaterialType"/>
+      <viewAttribute id="MaterialGroup_1"/>
+      <viewAttribute id="MaterialBaseUnit"/>
+      <viewAttribute id="ProductHierarchy"/>
+      <viewAttribute id="MaterialCategory"/>
+      <viewAttribute id="MaterialName"/>
+      <viewAttribute id="CompanyCode_1"/>
+      <viewAttribute id="Country_1"/>
+      <viewAttribute id="Currency"/>
+      <viewAttribute id="ChartOfAccounts"/>
+      <viewAttribute id="CreditControlArea"/>
+      <viewAttribute id="FiscalYearVariant_1"/>
+      <viewAttribute id="Company"/>
+      <viewAttribute id="CompanyCodeName"/>
+      <viewAttribute id="MaterialGroupText"/>
+      <viewAttribute id="BillingCategoryText"/>
+      <viewAttribute id="CustomerNumberSoldTo"/>
+      <viewAttribute id="SoldToAddress"/>
+      <viewAttribute id="SoldToCountry"/>
+      <viewAttribute id="SoldToRegion"/>
+      <viewAttribute id="SoldToCustomerAccountGroup"/>
+      <viewAttribute id="SoldToCity"/>
+      <viewAttribute id="SoldToCustomerName"/>
+      <viewAttribute id="PayerAddress"/>
+      <viewAttribute id="PayerCountry"/>
+      <viewAttribute id="PayerRegion"/>
+      <viewAttribute id="PayerCity"/>
+      <viewAttribute id="PayerCustomerName"/>
+      <viewAttribute id="PayerCustomerAccountGroup"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_7">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerParty" source="PayerParty"/></input>
+    <input node="Payer_P">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PayerParty" source="PayerCustomerNumber"/>
+    </input>
+    <joinAttribute name="PayerParty"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Customer_P">
+    <viewAttributes>
+      <viewAttribute id="CustomerNumber"/>
+      <viewAttribute id="CustomerAddress"/>
+      <viewAttribute id="CostomerCountry"/>
+      <viewAttribute id="CustomerRegion"/>
+      <viewAttribute id="CustomerAccountGroup"/>
+      <viewAttribute id="CustomerCity"/>
+      <viewAttribute id="CustomerName"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Customer_P$$$$D_Customer$$">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerAddress" source="Address"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CostomerCountry" source="Country"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerRegion" source="Region"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CustomerCity" source="City"/></input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_9" cardinality="CN_1" joinType="leftOuter" optimizeJoinColumns="true">
+    <viewAttributes>
+      <viewAttribute id="BillingDocument"/>
+      <viewAttribute id="BillingDocumentItem"/>
+      <viewAttribute id="BillingQuantityUnit"/>
+      <viewAttribute id="BillingToBaseQuantityNumrtr" aggregationType="sum"/>
+      <viewAttribute id="BillingToBaseQuantityDnmntr" aggregationType="sum"/>
+      <viewAttribute id="BaseUnit"/>
+      <viewAttribute id="ItemWeightUnit"/>
+      <viewAttribute id="ItemVolumeUnit"/>
+      <viewAttribute id="PricingDate"/>
+      <viewAttribute id="ServicesRenderedDate"/>
+      <viewAttribute id="PriceDetnExchangeRate" aggregationType="sum"/>
+      <viewAttribute id="ReferenceSDDocument"/>
+      <viewAttribute id="SalesDocument"/>
+      <viewAttribute id="SalesDocumentItem"/>
+      <viewAttribute id="Material"/>
+      <viewAttribute id="Batch"/>
+      <viewAttribute id="MaterialGroup"/>
+      <viewAttribute id="SalesDocumentItemCategory"/>
+      <viewAttribute id="SalesDocumentItemType"/>
+      <viewAttribute id="ProductHierarchyNode"/>
+      <viewAttribute id="RebateBasisAmount" aggregationType="sum"/>
+      <viewAttribute id="ItemGrossWeight" aggregationType="sum"/>
+      <viewAttribute id="ItemGrossAmountOfBillingDoc" aggregationType="sum"/>
+      <viewAttribute id="BillingQuantity" aggregationType="sum"/>
+      <viewAttribute id="BillingQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="Subtotal1Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal2Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal3Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal4Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal5Amount" aggregationType="sum"/>
+      <viewAttribute id="Subtotal6Amount" aggregationType="sum"/>
+      <viewAttribute id="MRPRequiredQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="TaxAmount" aggregationType="sum"/>
+      <viewAttribute id="ItemNetAmountOfBillingDoc" aggregationType="sum"/>
+      <viewAttribute id="ItemNetWeight" aggregationType="sum"/>
+      <viewAttribute id="EligibleAmountForCashDiscount" aggregationType="sum"/>
+      <viewAttribute id="CostAmount" aggregationType="sum"/>
+      <viewAttribute id="PricingScaleQuantityInBaseUnit" aggregationType="sum"/>
+      <viewAttribute id="ItemVolume" aggregationType="sum"/>
+      <viewAttribute id="BillingDocument_1"/>
+      <viewAttribute id="CompanyCode"/>
+      <viewAttribute id="SalesDistrict"/>
+      <viewAttribute id="CreationDate"/>
+      <viewAttribute id="CreatedByUser"/>
+      <viewAttribute id="BillingDocumentType"/>
+      <viewAttribute id="InvoiceListBillingDate"/>
+      <viewAttribute id="BillingDocumentCategory"/>
+      <viewAttribute id="IncotermsClassification"/>
+      <viewAttribute id="IncotermsTransferLocation"/>
+      <viewAttribute id="CustomerGroup"/>
+      <viewAttribute id="SoldToParty"/>
+      <viewAttribute id="PayerParty"/>
+      <viewAttribute id="AccountingExchangeRate" aggregationType="sum"/>
+      <viewAttribute id="ExchangeRateType"/>
+      <viewAttribute id="Division"/>
+      <viewAttribute id="StatisticsCurrency"/>
+      <viewAttribute id="SDDocumentCategory"/>
+      <viewAttribute id="SalesOrganization"/>
+      <viewAttribute id="DistributionChannel"/>
+      <viewAttribute id="TransactionCurrency"/>
+      <viewAttribute id="SalesOrgCompCode"/>
+      <viewAttribute id="Customer"/>
+      <viewAttribute id="Country"/>
+      <viewAttribute id="FiscalYearVariant"/>
+      <viewAttribute id="SalesOrganizationCurrency"/>
+      <viewAttribute id="SalesOrganizationName"/>
+      <viewAttribute id="SalesOrganization_1"/>
+      <viewAttribute id="Material_1"/>
+      <viewAttribute id="MaterialType"/>
+      <viewAttribute id="MaterialGroup_1"/>
+      <viewAttribute id="MaterialBaseUnit"/>
+      <viewAttribute id="ProductHierarchy"/>
+      <viewAttribute id="MaterialCategory"/>
+      <viewAttribute id="MaterialName"/>
+      <viewAttribute id="CompanyCode_1"/>
+      <viewAttribute id="Country_1"/>
+      <viewAttribute id="Currency"/>
+      <viewAttribute id="ChartOfAccounts"/>
+      <viewAttribute id="CreditControlArea"/>
+      <viewAttribute id="FiscalYearVariant_1"/>
+      <viewAttribute id="Company"/>
+      <viewAttribute id="CompanyCodeName"/>
+      <viewAttribute id="MaterialGroupText"/>
+      <viewAttribute id="BillingCategoryText"/>
+      <viewAttribute id="CustomerNumberSoldTo"/>
+      <viewAttribute id="SoldToAddress"/>
+      <viewAttribute id="SoldToCountry"/>
+      <viewAttribute id="SoldToRegion"/>
+      <viewAttribute id="SoldToCustomerAccountGroup"/>
+      <viewAttribute id="SoldToCity"/>
+      <viewAttribute id="SoldToCustomerName"/>
+      <viewAttribute id="PayerAddress"/>
+      <viewAttribute id="PayerCountry"/>
+      <viewAttribute id="PayerRegion"/>
+      <viewAttribute id="PayerCity"/>
+      <viewAttribute id="PayerCustomerName"/>
+      <viewAttribute id="PayerCustomerAccountGroup"/>
+      <viewAttribute id="CustomerAddress"/>
+      <viewAttribute id="CostomerCountry"/>
+      <viewAttribute id="CustomerRegion"/>
+      <viewAttribute id="CustomerAccountGroup"/>
+      <viewAttribute id="CustomerCity"/>
+      <viewAttribute id="CustomerName"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_8">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Customer" source="Customer"/></input>
+    <input node="Customer_P">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Customer" source="CustomerNumber"/>
+    </input>
+    <joinAttribute name="Customer"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_9">
+  <attributes>
+    <attribute id="BillingDocument" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Billing Document"/>
+      <keyMapping columnObjectName="Join_9" columnName="BillingDocument"/>
+    </attribute>
+    <attribute id="BillingDocumentItem" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Billing Document Item"/>
+      <keyMapping columnObjectName="Join_9" columnName="BillingDocumentItem"/>
+    </attribute>
+    <attribute id="BillingQuantityUnit" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BillingQuantityUnit"/>
+      <keyMapping columnObjectName="Join_9" columnName="BillingQuantityUnit"/>
+    </attribute>
+    <attribute id="BaseUnit" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BaseUnit"/>
+      <keyMapping columnObjectName="Join_9" columnName="BaseUnit"/>
+    </attribute>
+    <attribute id="ItemWeightUnit" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ItemWeightUnit"/>
+      <keyMapping columnObjectName="Join_9" columnName="ItemWeightUnit"/>
+    </attribute>
+    <attribute id="ItemVolumeUnit" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ItemVolumeUnit"/>
+      <keyMapping columnObjectName="Join_9" columnName="ItemVolumeUnit"/>
+    </attribute>
+    <attribute id="PricingDate" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PricingDate"/>
+      <keyMapping columnObjectName="Join_9" columnName="PricingDate"/>
+    </attribute>
+    <attribute id="ServicesRenderedDate" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ServicesRenderedDate"/>
+      <keyMapping columnObjectName="Join_9" columnName="ServicesRenderedDate"/>
+    </attribute>
+    <attribute id="ReferenceSDDocument" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ReferenceSDDocument"/>
+      <keyMapping columnObjectName="Join_9" columnName="ReferenceSDDocument"/>
+    </attribute>
+    <attribute id="SalesDocument" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SalesDocument"/>
+      <keyMapping columnObjectName="Join_9" columnName="SalesDocument"/>
+    </attribute>
+    <attribute id="SalesDocumentItem" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SalesDocumentItem"/>
+      <keyMapping columnObjectName="Join_9" columnName="SalesDocumentItem"/>
+    </attribute>
+    <attribute id="Material" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Material"/>
+      <keyMapping columnObjectName="Join_9" columnName="Material"/>
+    </attribute>
+    <attribute id="Batch" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Batch"/>
+      <keyMapping columnObjectName="Join_9" columnName="Batch"/>
+    </attribute>
+    <attribute id="MaterialGroup" order="21" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MaterialGroup"/>
+      <keyMapping columnObjectName="Join_9" columnName="MaterialGroup"/>
+    </attribute>
+    <attribute id="SalesDocumentItemCategory" order="22" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SalesDocumentItemCategory"/>
+      <keyMapping columnObjectName="Join_9" columnName="SalesDocumentItemCategory"/>
+    </attribute>
+    <attribute id="SalesDocumentItemType" order="23" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SalesDocumentItemType"/>
+      <keyMapping columnObjectName="Join_9" columnName="SalesDocumentItemType"/>
+    </attribute>
+    <attribute id="ProductHierarchyNode" order="24" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ProductHierarchyNode"/>
+      <keyMapping columnObjectName="Join_9" columnName="ProductHierarchyNode"/>
+    </attribute>
+    <attribute id="BillingDocument_1" order="44" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BillingDocument_1"/>
+      <keyMapping columnObjectName="Join_9" columnName="BillingDocument_1"/>
+    </attribute>
+    <attribute id="CompanyCode" order="45" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CompanyCode"/>
+      <keyMapping columnObjectName="Join_9" columnName="CompanyCode"/>
+    </attribute>
+    <attribute id="SalesDistrict" order="46" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SalesDistrict"/>
+      <keyMapping columnObjectName="Join_9" columnName="SalesDistrict"/>
+    </attribute>
+    <attribute id="CreationDate" order="47" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CreationDate"/>
+      <keyMapping columnObjectName="Join_9" columnName="CreationDate"/>
+    </attribute>
+    <attribute id="CreatedByUser" order="48" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CreatedByUser"/>
+      <keyMapping columnObjectName="Join_9" columnName="CreatedByUser"/>
+    </attribute>
+    <attribute id="BillingDocumentType" order="49" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BillingDocumentType"/>
+      <keyMapping columnObjectName="Join_9" columnName="BillingDocumentType"/>
+    </attribute>
+    <attribute id="InvoiceListBillingDate" order="50" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="InvoiceListBillingDate"/>
+      <keyMapping columnObjectName="Join_9" columnName="InvoiceListBillingDate"/>
+    </attribute>
+    <attribute id="BillingDocumentCategory" order="51" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BillingDocumentCategory"/>
+      <keyMapping columnObjectName="Join_9" columnName="BillingDocumentCategory"/>
+    </attribute>
+    <attribute id="IncotermsClassification" order="52" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IncotermsClassification"/>
+      <keyMapping columnObjectName="Join_9" columnName="IncotermsClassification"/>
+    </attribute>
+    <attribute id="IncotermsTransferLocation" order="53" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IncotermsTransferLocation"/>
+      <keyMapping columnObjectName="Join_9" columnName="IncotermsTransferLocation"/>
+    </attribute>
+    <attribute id="CustomerGroup" order="54" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CustomerGroup"/>
+      <keyMapping columnObjectName="Join_9" columnName="CustomerGroup"/>
+    </attribute>
+    <attribute id="SoldToParty" order="55" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SoldToParty"/>
+      <keyMapping columnObjectName="Join_9" columnName="SoldToParty"/>
+    </attribute>
+    <attribute id="PayerParty" order="56" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PayerParty"/>
+      <keyMapping columnObjectName="Join_9" columnName="PayerParty"/>
+    </attribute>
+    <attribute id="ExchangeRateType" order="58" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ExchangeRateType"/>
+      <keyMapping columnObjectName="Join_9" columnName="ExchangeRateType"/>
+    </attribute>
+    <attribute id="Division" order="59" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Division"/>
+      <keyMapping columnObjectName="Join_9" columnName="Division"/>
+    </attribute>
+    <attribute id="StatisticsCurrency" order="60" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="StatisticsCurrency"/>
+      <keyMapping columnObjectName="Join_9" columnName="StatisticsCurrency"/>
+    </attribute>
+    <attribute id="SDDocumentCategory" order="61" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SDDocumentCategory"/>
+      <keyMapping columnObjectName="Join_9" columnName="SDDocumentCategory"/>
+    </attribute>
+    <attribute id="SalesOrganization" order="62" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SalesOrganization"/>
+      <keyMapping columnObjectName="Join_9" columnName="SalesOrganization"/>
+    </attribute>
+    <attribute id="DistributionChannel" order="63" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DistributionChannel"/>
+      <keyMapping columnObjectName="Join_9" columnName="DistributionChannel"/>
+    </attribute>
+    <attribute id="TransactionCurrency" order="64" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TransactionCurrency"/>
+      <keyMapping columnObjectName="Join_9" columnName="TransactionCurrency"/>
+    </attribute>
+    <attribute id="SalesOrgCompCode" order="65" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SalesOrgCompCode"/>
+      <keyMapping columnObjectName="Join_9" columnName="SalesOrgCompCode"/>
+    </attribute>
+    <attribute id="Customer" order="66" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Customer"/>
+      <keyMapping columnObjectName="Join_9" columnName="Customer"/>
+    </attribute>
+    <attribute id="Country" order="67" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Country"/>
+      <keyMapping columnObjectName="Join_9" columnName="Country"/>
+    </attribute>
+    <attribute id="FiscalYearVariant" order="68" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FiscalYearVariant"/>
+      <keyMapping columnObjectName="Join_9" columnName="FiscalYearVariant"/>
+    </attribute>
+    <attribute id="SalesOrganizationCurrency" order="69" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SalesOrganizationCurrency"/>
+      <keyMapping columnObjectName="Join_9" columnName="SalesOrganizationCurrency"/>
+    </attribute>
+    <attribute id="SalesOrganizationName" order="70" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SalesOrganizationName"/>
+      <keyMapping columnObjectName="Join_9" columnName="SalesOrganizationName"/>
+    </attribute>
+    <attribute id="SalesOrganization_1" order="71" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SalesOrganization_1"/>
+      <keyMapping columnObjectName="Join_9" columnName="SalesOrganization_1"/>
+    </attribute>
+    <attribute id="Material_1" order="72" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Material_1"/>
+      <keyMapping columnObjectName="Join_9" columnName="Material_1"/>
+    </attribute>
+    <attribute id="MaterialType" order="73" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MaterialType"/>
+      <keyMapping columnObjectName="Join_9" columnName="MaterialType"/>
+    </attribute>
+    <attribute id="MaterialGroup_1" order="74" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MaterialGroup_1"/>
+      <keyMapping columnObjectName="Join_9" columnName="MaterialGroup_1"/>
+    </attribute>
+    <attribute id="MaterialBaseUnit" order="75" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MaterialBaseUnit"/>
+      <keyMapping columnObjectName="Join_9" columnName="MaterialBaseUnit"/>
+    </attribute>
+    <attribute id="ProductHierarchy" order="76" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ProductHierarchy"/>
+      <keyMapping columnObjectName="Join_9" columnName="ProductHierarchy"/>
+    </attribute>
+    <attribute id="MaterialCategory" order="77" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MaterialCategory"/>
+      <keyMapping columnObjectName="Join_9" columnName="MaterialCategory"/>
+    </attribute>
+    <attribute id="MaterialName" order="78" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MaterialName"/>
+      <keyMapping columnObjectName="Join_9" columnName="MaterialName"/>
+    </attribute>
+    <attribute id="CompanyCode_1" order="79" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CompanyCode_1"/>
+      <keyMapping columnObjectName="Join_9" columnName="CompanyCode_1"/>
+    </attribute>
+    <attribute id="Country_1" order="80" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Country_1"/>
+      <keyMapping columnObjectName="Join_9" columnName="Country_1"/>
+    </attribute>
+    <attribute id="Currency" order="81" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Currency"/>
+      <keyMapping columnObjectName="Join_9" columnName="Currency"/>
+    </attribute>
+    <attribute id="ChartOfAccounts" order="82" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ChartOfAccounts"/>
+      <keyMapping columnObjectName="Join_9" columnName="ChartOfAccounts"/>
+    </attribute>
+    <attribute id="CreditControlArea" order="83" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CreditControlArea"/>
+      <keyMapping columnObjectName="Join_9" columnName="CreditControlArea"/>
+    </attribute>
+    <attribute id="FiscalYearVariant_1" order="84" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FiscalYearVariant_1"/>
+      <keyMapping columnObjectName="Join_9" columnName="FiscalYearVariant_1"/>
+    </attribute>
+    <attribute id="Company" order="85" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Company"/>
+      <keyMapping columnObjectName="Join_9" columnName="Company"/>
+    </attribute>
+    <attribute id="CompanyCodeName" order="86" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CompanyCodeName"/>
+      <keyMapping columnObjectName="Join_9" columnName="CompanyCodeName"/>
+    </attribute>
+    <attribute id="MaterialGroupText" order="87" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MaterialGroupText"/>
+      <keyMapping columnObjectName="Join_9" columnName="MaterialGroupText"/>
+    </attribute>
+    <attribute id="BillingCategoryText" order="88" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TXTLG"/>
+      <keyMapping columnObjectName="Join_9" columnName="BillingCategoryText"/>
+    </attribute>
+    <attribute id="CustomerNumberSoldTo" order="89" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="KUNNR"/>
+      <keyMapping columnObjectName="Join_9" columnName="CustomerNumberSoldTo"/>
+    </attribute>
+    <attribute id="SoldToAddress" order="90" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ADRNR"/>
+      <keyMapping columnObjectName="Join_9" columnName="SoldToAddress"/>
+    </attribute>
+    <attribute id="SoldToCountry" order="91" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LAND1"/>
+      <keyMapping columnObjectName="Join_9" columnName="SoldToCountry"/>
+    </attribute>
+    <attribute id="SoldToRegion" order="92" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REGIO"/>
+      <keyMapping columnObjectName="Join_9" columnName="SoldToRegion"/>
+    </attribute>
+    <attribute id="SoldToCustomerAccountGroup" order="93" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="KTOKD"/>
+      <keyMapping columnObjectName="Join_9" columnName="SoldToCustomerAccountGroup"/>
+    </attribute>
+    <attribute id="SoldToCity" order="94" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CITYC"/>
+      <keyMapping columnObjectName="Join_9" columnName="SoldToCity"/>
+    </attribute>
+    <attribute id="SoldToCustomerName" order="95" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TXTMD"/>
+      <keyMapping columnObjectName="Join_9" columnName="SoldToCustomerName"/>
+    </attribute>
+    <attribute id="PayerAddress" order="96" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ADRNR"/>
+      <keyMapping columnObjectName="Join_9" columnName="PayerAddress"/>
+    </attribute>
+    <attribute id="PayerCountry" order="97" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LAND1"/>
+      <keyMapping columnObjectName="Join_9" columnName="PayerCountry"/>
+    </attribute>
+    <attribute id="PayerRegion" order="98" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REGIO"/>
+      <keyMapping columnObjectName="Join_9" columnName="PayerRegion"/>
+    </attribute>
+    <attribute id="PayerCity" order="99" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CITYC"/>
+      <keyMapping columnObjectName="Join_9" columnName="PayerCity"/>
+    </attribute>
+    <attribute id="PayerCustomerName" order="100" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TXTMD"/>
+      <keyMapping columnObjectName="Join_9" columnName="PayerCustomerName"/>
+    </attribute>
+    <attribute id="PayerCustomerAccountGroup" order="101" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="KTOKD"/>
+      <keyMapping columnObjectName="Join_9" columnName="PayerCustomerAccountGroup"/>
+    </attribute>
+    <attribute id="CustomerAddress" order="102" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ADRNR"/>
+      <keyMapping columnObjectName="Join_9" columnName="CustomerAddress"/>
+    </attribute>
+    <attribute id="CostomerCountry" order="103" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LAND1"/>
+      <keyMapping columnObjectName="Join_9" columnName="CostomerCountry"/>
+    </attribute>
+    <attribute id="CustomerRegion" order="104" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REGIO"/>
+      <keyMapping columnObjectName="Join_9" columnName="CustomerRegion"/>
+    </attribute>
+    <attribute id="CustomerAccountGroup" order="105" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="KTOKD"/>
+      <keyMapping columnObjectName="Join_9" columnName="CustomerAccountGroup"/>
+    </attribute>
+    <attribute id="CustomerCity" order="106" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CITYC"/>
+      <keyMapping columnObjectName="Join_9" columnName="CustomerCity"/>
+    </attribute>
+    <attribute id="CustomerName" order="107" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TXTMD"/>
+      <keyMapping columnObjectName="Join_9" columnName="CustomerName"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes>
+    <calculatedAttribute id="BillingDate" order="1" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Billing Date"/>
+      <keyCalculation datatype="DATE" expressionLanguage="SQL">
+        <formula>TO_DATE(&quot;InvoiceListBillingDate&quot;,'YYYYMMDD')</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+    <calculatedAttribute id="BillingYear" order="2" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Billing Year"/>
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="4">
+        <formula>year(&quot;InvoiceListBillingDate&quot;)</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+    <calculatedAttribute id="BillingMonth" order="3" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Billing Month"/>
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="2">
+        <formula>month(&quot;InvoiceListBillingDate&quot;)</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+    <calculatedAttribute id="BillingQuarter" order="4" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Billing Quarter"/>
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>quarter(&quot;InvoiceListBillingDate&quot;)</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+  </calculatedAttributes>
+  <baseMeasures>
+    <measure id="BillingToBaseQuantityNumrtr" order="8" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Billing To Base QuantityNumrtr"/>
+      <measureMapping columnObjectName="Join_9" columnName="BillingToBaseQuantityNumrtr"/>
+    </measure>
+    <measure id="BillingToBaseQuantityDnmntr" order="9" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="BillingToBaseQuantityDnmntr"/>
+      <measureMapping columnObjectName="Join_9" columnName="BillingToBaseQuantityDnmntr"/>
+    </measure>
+    <measure id="PriceDetnExchangeRate" order="15" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="PriceDetnExchangeRate"/>
+      <measureMapping columnObjectName="Join_9" columnName="PriceDetnExchangeRate"/>
+    </measure>
+    <measure id="RebateBasisAmount" order="25" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="RebateBasisAmount"/>
+      <measureMapping columnObjectName="Join_9" columnName="RebateBasisAmount"/>
+    </measure>
+    <measure id="ItemGrossWeight" order="26" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="ItemGrossWeight"/>
+      <measureMapping columnObjectName="Join_9" columnName="ItemGrossWeight"/>
+    </measure>
+    <measure id="ItemGrossAmountOfBillingDoc" order="27" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="ItemGrossAmountOfBillingDoc"/>
+      <measureMapping columnObjectName="Join_9" columnName="ItemGrossAmountOfBillingDoc"/>
+    </measure>
+    <measure id="BillingQuantity" order="28" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Billing Quantity"/>
+      <measureMapping columnObjectName="Join_9" columnName="BillingQuantity"/>
+    </measure>
+    <measure id="BillingQuantityInBaseUnit" order="29" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="BillingQuantityInBaseUnit"/>
+      <measureMapping columnObjectName="Join_9" columnName="BillingQuantityInBaseUnit"/>
+    </measure>
+    <measure id="Subtotal1Amount" order="30" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Subtotal1Amount"/>
+      <measureMapping columnObjectName="Join_9" columnName="Subtotal1Amount"/>
+    </measure>
+    <measure id="Subtotal2Amount" order="31" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Subtotal2Amount"/>
+      <measureMapping columnObjectName="Join_9" columnName="Subtotal2Amount"/>
+    </measure>
+    <measure id="Subtotal3Amount" order="32" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Subtotal3Amount"/>
+      <measureMapping columnObjectName="Join_9" columnName="Subtotal3Amount"/>
+    </measure>
+    <measure id="Subtotal4Amount" order="33" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Subtotal4Amount"/>
+      <measureMapping columnObjectName="Join_9" columnName="Subtotal4Amount"/>
+    </measure>
+    <measure id="Subtotal5Amount" order="34" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Subtotal5Amount"/>
+      <measureMapping columnObjectName="Join_9" columnName="Subtotal5Amount"/>
+    </measure>
+    <measure id="Subtotal6Amount" order="35" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Subtotal6Amount"/>
+      <measureMapping columnObjectName="Join_9" columnName="Subtotal6Amount"/>
+    </measure>
+    <measure id="MRPRequiredQuantityInBaseUnit" order="36" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="MRPRequiredQuantityInBaseUnit"/>
+      <measureMapping columnObjectName="Join_9" columnName="MRPRequiredQuantityInBaseUnit"/>
+    </measure>
+    <measure id="TaxAmount" order="37" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="TaxAmount"/>
+      <measureMapping columnObjectName="Join_9" columnName="TaxAmount"/>
+    </measure>
+    <measure id="ItemNetAmountOfBillingDoc" order="38" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="ItemNetAmountOfBillingDoc"/>
+      <measureMapping columnObjectName="Join_9" columnName="ItemNetAmountOfBillingDoc"/>
+    </measure>
+    <measure id="ItemNetWeight" order="39" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="ItemNetWeight"/>
+      <measureMapping columnObjectName="Join_9" columnName="ItemNetWeight"/>
+    </measure>
+    <measure id="EligibleAmountForCashDiscount" order="40" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="EligibleAmountForCashDiscount"/>
+      <measureMapping columnObjectName="Join_9" columnName="EligibleAmountForCashDiscount"/>
+    </measure>
+    <measure id="CostAmount" order="41" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="CostAmount"/>
+      <measureMapping columnObjectName="Join_9" columnName="CostAmount"/>
+    </measure>
+    <measure id="PricingScaleQuantityInBaseUnit" order="42" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="PricingScaleQuantityInBaseUnit"/>
+      <measureMapping columnObjectName="Join_9" columnName="PricingScaleQuantityInBaseUnit"/>
+    </measure>
+    <measure id="ItemVolume" order="43" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="ItemVolume"/>
+      <measureMapping columnObjectName="Join_9" columnName="ItemVolume"/>
+    </measure>
+    <measure id="AccountingExchangeRate" order="57" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="AccountingExchangeRate"/>
+      <measureMapping columnObjectName="Join_9" columnName="AccountingExchangeRate"/>
+    </measure></baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions>
+    <localDimension id="Time_Hier">
+      <attributeRef xsi:type="DataFoundation:Attribute">BillingYear</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">BillingQuarter</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">BillingMonth</attributeRef>
+      <hierarchies>
+        <hierarchy xsi:type="Dimension:LeveledHierarchy" id="Time_Hier" aggregateAllNodes="false" orphanedNodesHandling="ROOT_NODES" rootNodeVisibility="DO_NOT_ADD_ROOT_NODE" withRootNode="false" nodeStyle="NAME_PATH_ENFORCED" cacheEnabled="true" cycleHandling="BREAKUP" emptyValueIsNull="false">
+          <descriptions defaultDescription="Time_Hier"/>
+          <unassignedMemberProperties mode="FALSE"/>
+          <levels>
+            <level levelAttribute="BillingYear" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="BillingYear" sortDirection="ASC"/>
+            <level levelAttribute="BillingQuarter" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="BillingQuarter" sortDirection="ASC"/>
+            <level levelAttribute="BillingMonth" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="BillingMonth" sortDirection="ASC"/>
+          </levels>
+        </hierarchy>
+      </hierarchies>
+    </localDimension>
+    <localDimension id="MaterialID_Hier">
+      <attributeRef xsi:type="DataFoundation:Attribute">MaterialGroup</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">Material</attributeRef>
+      <hierarchies>
+        <hierarchy xsi:type="Dimension:LeveledHierarchy" id="MaterialID_Hier" aggregateAllNodes="false" orphanedNodesHandling="ROOT_NODES" rootNodeVisibility="DO_NOT_ADD_ROOT_NODE" withRootNode="false" nodeStyle="NAME_PATH_ENFORCED" cacheEnabled="true" cycleHandling="BREAKUP" emptyValueIsNull="false">
+          <descriptions defaultDescription="MaterialID_Hier"/>
+          <unassignedMemberProperties mode="FALSE"/>
+          <levels>
+            <level levelAttribute="MaterialGroup" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="Material" sortDirection="ASC"/>
+            <level levelAttribute="Material" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="MaterialGroup" sortDirection="ASC"/>
+          </levels>
+        </hierarchy>
+      </hierarchies>
+    </localDimension>
+    <localDimension id="MaterialTXT_Hier">
+      <attributeRef xsi:type="DataFoundation:Attribute">MaterialGroupText</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">MaterialName</attributeRef>
+      <hierarchies>
+        <hierarchy xsi:type="Dimension:LeveledHierarchy" id="MaterialTXT_Hier" aggregateAllNodes="false" orphanedNodesHandling="ROOT_NODES" rootNodeVisibility="DO_NOT_ADD_ROOT_NODE" withRootNode="false" nodeStyle="NAME_PATH_ENFORCED" cacheEnabled="true" cycleHandling="BREAKUP" emptyValueIsNull="false">
+          <descriptions defaultDescription="MaterialTXT_Hier"/>
+          <unassignedMemberProperties mode="FALSE"/>
+          <levels>
+            <level levelAttribute="MaterialGroupText" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="MaterialGroupText" sortDirection="ASC"/>
+            <level levelAttribute="MaterialName" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="MaterialName" sortDirection="ASC"/>
+          </levels>
+        </hierarchy>
+      </hierarchies>
+    </localDimension>
+  </localDimensions>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="880" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="BillingHdr_P" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="1656"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="BillingItem_P" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="301" y="1656"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="118" y="1496"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="BillingItem_P" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="224"/>
+    </shape>
+    <shape modelObjectName="BillingHdr_P" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="216"/>
+    </shape>
+    <shape expanded="true" modelObjectName="SalesOrg_P" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="394" y="1496"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="145" y="1336"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="219"/>
+    </shape>
+    <shape modelObjectName="SalesOrg_P" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="219"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Material_P" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="516" y="1336"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="172" y="1176"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="224"/>
+    </shape>
+    <shape modelObjectName="Material_P" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="170"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="198" y="1016"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Join_3" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="224"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="173"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="658" y="1176"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  
+  
+    <shape expanded="true" modelObjectName="COMPCODE_P" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="817" y="1016"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_5" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="778" y="856"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Join_4" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="224"/>
+    </shape>
+    <shape modelObjectName="COMPCODE_P" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="146"/>
+    </shape>
+    <shape expanded="true" modelObjectName="BillingCategory_P" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="988" y="856"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_6" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="958" y="696"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Join_5" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="BillingCategory_P" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="SoldTo_P" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="746" y="696"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_7" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="772" y="536"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Join_6" modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="SoldTo_P" modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Payer_P" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="1066" y="536"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_8" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="1006" y="376"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Join_7" modelObjectNameSpace="Join_8" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Payer_P" modelObjectNameSpace="Join_8" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Customer_P" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="796" y="376"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_9" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="880" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Join_8" modelObjectNameSpace="Join_9" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Customer_P" modelObjectNameSpace="Join_9" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="D_Material" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="D_Material"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="MATERIAL_ATTR">
+    <resourceUri>MATERIAL_ATTR</resourceUri>
+  </DataSource>
+  <DataSource id="MATERIAL_TEXT">
+    <resourceUri>MATERIAL_TEXT</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="MatAttr_P">
+    <viewAttributes>
+      <viewAttribute id="Material"/>
+      <viewAttribute id="ERSDA"/>
+      <viewAttribute id="ERNAM"/>
+      <viewAttribute id="LAEDA"/>
+      <viewAttribute id="AENAM"/>
+      <viewAttribute id="VPSTA"/>
+      <viewAttribute id="PSTAT"/>
+      <viewAttribute id="LVORM"/>
+      <viewAttribute id="MaterialType"/>
+      <viewAttribute id="MBRSH"/>
+      <viewAttribute id="MaterialGroup"/>
+      <viewAttribute id="BISMT"/>
+      <viewAttribute id="MaterialBaseUnit"/>
+      <viewAttribute id="BSTME"/>
+      <viewAttribute id="ZEINR"/>
+      <viewAttribute id="ZEIAR"/>
+      <viewAttribute id="ZEIVR"/>
+      <viewAttribute id="ZEIFO"/>
+      <viewAttribute id="AESZN"/>
+      <viewAttribute id="BLATT"/>
+      <viewAttribute id="BLANZ"/>
+      <viewAttribute id="FERTH"/>
+      <viewAttribute id="FORMT"/>
+      <viewAttribute id="GROES"/>
+      <viewAttribute id="WRKST"/>
+      <viewAttribute id="NORMT"/>
+      <viewAttribute id="LABOR"/>
+      <viewAttribute id="EKWSL"/>
+      <viewAttribute id="BRGEW"/>
+      <viewAttribute id="NTGEW"/>
+      <viewAttribute id="GEWEI"/>
+      <viewAttribute id="VOLUM"/>
+      <viewAttribute id="VOLEH"/>
+      <viewAttribute id="BEHVO"/>
+      <viewAttribute id="RAUBE"/>
+      <viewAttribute id="TEMPB"/>
+      <viewAttribute id="DISST"/>
+      <viewAttribute id="TRAGR"/>
+      <viewAttribute id="STOFF"/>
+      <viewAttribute id="SPART"/>
+      <viewAttribute id="KUNNR"/>
+      <viewAttribute id="EANNR"/>
+      <viewAttribute id="WESCH"/>
+      <viewAttribute id="BWVOR"/>
+      <viewAttribute id="BWSCL"/>
+      <viewAttribute id="SAISO"/>
+      <viewAttribute id="ETIAR"/>
+      <viewAttribute id="ETIFO"/>
+      <viewAttribute id="ENTAR"/>
+      <viewAttribute id="EAN11"/>
+      <viewAttribute id="NUMTP"/>
+      <viewAttribute id="LAENG"/>
+      <viewAttribute id="BREIT"/>
+      <viewAttribute id="HOEHE"/>
+      <viewAttribute id="MEABM"/>
+      <viewAttribute id="ProductHierarchy"/>
+      <viewAttribute id="AEKLK"/>
+      <viewAttribute id="CADKZ"/>
+      <viewAttribute id="QMPUR"/>
+      <viewAttribute id="ERGEW"/>
+      <viewAttribute id="ERGEI"/>
+      <viewAttribute id="ERVOL"/>
+      <viewAttribute id="ERVOE"/>
+      <viewAttribute id="GEWTO"/>
+      <viewAttribute id="VOLTO"/>
+      <viewAttribute id="VABME"/>
+      <viewAttribute id="KZREV"/>
+      <viewAttribute id="KZKFG"/>
+      <viewAttribute id="XCHPF"/>
+      <viewAttribute id="VHART"/>
+      <viewAttribute id="FUELG"/>
+      <viewAttribute id="STFAK"/>
+      <viewAttribute id="MAGRV"/>
+      <viewAttribute id="BEGRU"/>
+      <viewAttribute id="DATAB"/>
+      <viewAttribute id="LIQDT"/>
+      <viewAttribute id="SAISJ"/>
+      <viewAttribute id="PLGTP"/>
+      <viewAttribute id="MLGUT"/>
+      <viewAttribute id="EXTWG"/>
+      <viewAttribute id="SATNR"/>
+      <viewAttribute id="MaterialCategory"/>
+      <viewAttribute id="KZKUP"/>
+      <viewAttribute id="KZNFM"/>
+      <viewAttribute id="PMATA"/>
+      <viewAttribute id="MSTAE"/>
+      <viewAttribute id="MSTAV"/>
+      <viewAttribute id="MSTDE"/>
+      <viewAttribute id="MSTDV"/>
+      <viewAttribute id="TAKLV"/>
+      <viewAttribute id="RBNRM"/>
+      <viewAttribute id="MHDRZ"/>
+      <viewAttribute id="MHDHB"/>
+      <viewAttribute id="MHDLP"/>
+      <viewAttribute id="INHME"/>
+      <viewAttribute id="INHAL"/>
+      <viewAttribute id="VPREH"/>
+      <viewAttribute id="ETIAG"/>
+      <viewAttribute id="INHBR"/>
+      <viewAttribute id="CMETH"/>
+      <viewAttribute id="CUOBF"/>
+      <viewAttribute id="KZUMW"/>
+      <viewAttribute id="KOSCH"/>
+      <viewAttribute id="SPROF"/>
+      <viewAttribute id="NRFHG"/>
+      <viewAttribute id="MFRPN"/>
+      <viewAttribute id="MFRNR"/>
+      <viewAttribute id="BMATN"/>
+      <viewAttribute id="MPROF"/>
+      <viewAttribute id="KZWSM"/>
+      <viewAttribute id="SAITY"/>
+      <viewAttribute id="PROFL"/>
+      <viewAttribute id="IHIVI"/>
+      <viewAttribute id="ILOOS"/>
+      <viewAttribute id="SERLV"/>
+      <viewAttribute id="KZGVH"/>
+      <viewAttribute id="XGCHP"/>
+      <viewAttribute id="KZEFF"/>
+      <viewAttribute id="COMPL"/>
+      <viewAttribute id="IPRKZ"/>
+      <viewAttribute id="RDMHD"/>
+      <viewAttribute id="PRZUS"/>
+      <viewAttribute id="MTPOS_MARA"/>
+      <viewAttribute id="BFLME"/>
+      <viewAttribute id="NSNID"/>
+      <viewAttribute id="COLOR_ATINN"/>
+      <viewAttribute id="SIZE1_ATINN"/>
+      <viewAttribute id="SIZE2_ATINN"/>
+      <viewAttribute id="COLOR"/>
+      <viewAttribute id="SIZE1"/>
+      <viewAttribute id="SIZE2"/>
+      <viewAttribute id="FREE_CHAR"/>
+      <viewAttribute id="CARE_CODE"/>
+      <viewAttribute id="BRAND_ID"/>
+      <viewAttribute id="FIBER_CODE1"/>
+      <viewAttribute id="FIBER_PART1"/>
+      <viewAttribute id="FIBER_CODE2"/>
+      <viewAttribute id="FIBER_PART2"/>
+      <viewAttribute id="FIBER_CODE3"/>
+      <viewAttribute id="FIBER_PART3"/>
+      <viewAttribute id="FIBER_CODE4"/>
+      <viewAttribute id="FIBER_PART4"/>
+      <viewAttribute id="RPA_WGH1"/>
+      <viewAttribute id="RPA_WGH2"/>
+      <viewAttribute id="RPA_WGH3"/>
+      <viewAttribute id="RPA_WGH4"/>
+      <viewAttribute id="FASHGRD"/>
+      <viewAttribute id="ZZDISMM"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="MATERIAL_ATTR">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Material" source="MATNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ERSDA" source="ERSDA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ERNAM" source="ERNAM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAEDA" source="LAEDA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AENAM" source="AENAM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VPSTA" source="VPSTA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PSTAT" source="PSTAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LVORM" source="LVORM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialType" source="MTART"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MBRSH" source="MBRSH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialGroup" source="MATKL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BISMT" source="BISMT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialBaseUnit" source="MEINS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BSTME" source="BSTME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZEINR" source="ZEINR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZEIAR" source="ZEIAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZEIVR" source="ZEIVR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZEIFO" source="ZEIFO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AESZN" source="AESZN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BLATT" source="BLATT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BLANZ" source="BLANZ"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FERTH" source="FERTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FORMT" source="FORMT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GROES" source="GROES"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WRKST" source="WRKST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NORMT" source="NORMT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LABOR" source="LABOR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EKWSL" source="EKWSL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BRGEW" source="BRGEW"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NTGEW" source="NTGEW"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GEWEI" source="GEWEI"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VOLUM" source="VOLUM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VOLEH" source="VOLEH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BEHVO" source="BEHVO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RAUBE" source="RAUBE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TEMPB" source="TEMPB"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DISST" source="DISST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TRAGR" source="TRAGR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STOFF" source="STOFF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPART" source="SPART"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KUNNR" source="KUNNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EANNR" source="EANNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WESCH" source="WESCH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BWVOR" source="BWVOR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BWSCL" source="BWSCL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SAISO" source="SAISO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ETIAR" source="ETIAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ETIFO" source="ETIFO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ENTAR" source="ENTAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EAN11" source="EAN11"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUMTP" source="NUMTP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LAENG" source="LAENG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BREIT" source="BREIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HOEHE" source="HOEHE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MEABM" source="MEABM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductHierarchy" source="PRDHA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AEKLK" source="AEKLK"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CADKZ" source="CADKZ"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QMPUR" source="QMPUR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ERGEW" source="ERGEW"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ERGEI" source="ERGEI"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ERVOL" source="ERVOL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ERVOE" source="ERVOE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GEWTO" source="GEWTO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VOLTO" source="VOLTO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VABME" source="VABME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KZREV" source="KZREV"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KZKFG" source="KZKFG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="XCHPF" source="XCHPF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VHART" source="VHART"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FUELG" source="FUELG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STFAK" source="STFAK"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MAGRV" source="MAGRV"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BEGRU" source="BEGRU"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DATAB" source="DATAB"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LIQDT" source="LIQDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SAISJ" source="SAISJ"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PLGTP" source="PLGTP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MLGUT" source="MLGUT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EXTWG" source="EXTWG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SATNR" source="SATNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialCategory" source="ATTYP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KZKUP" source="KZKUP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KZNFM" source="KZNFM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PMATA" source="PMATA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MSTAE" source="MSTAE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MSTAV" source="MSTAV"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MSTDE" source="MSTDE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MSTDV" source="MSTDV"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TAKLV" source="TAKLV"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RBNRM" source="RBNRM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MHDRZ" source="MHDRZ"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MHDHB" source="MHDHB"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MHDLP" source="MHDLP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INHME" source="INHME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INHAL" source="INHAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VPREH" source="VPREH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ETIAG" source="ETIAG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INHBR" source="INHBR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CMETH" source="CMETH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUOBF" source="CUOBF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KZUMW" source="KZUMW"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KOSCH" source="KOSCH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPROF" source="SPROF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NRFHG" source="NRFHG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MFRPN" source="MFRPN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MFRNR" source="MFRNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BMATN" source="BMATN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MPROF" source="MPROF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KZWSM" source="KZWSM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SAITY" source="SAITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROFL" source="PROFL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IHIVI" source="IHIVI"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ILOOS" source="ILOOS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SERLV" source="SERLV"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KZGVH" source="KZGVH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="XGCHP" source="XGCHP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="KZEFF" source="KZEFF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPL" source="COMPL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IPRKZ" source="IPRKZ"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RDMHD" source="RDMHD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRZUS" source="PRZUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MTPOS_MARA" source="MTPOS_MARA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BFLME" source="BFLME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NSNID" source="NSNID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COLOR_ATINN" source="COLOR_ATINN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SIZE1_ATINN" source="SIZE1_ATINN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SIZE2_ATINN" source="SIZE2_ATINN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COLOR" source="COLOR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SIZE1" source="SIZE1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SIZE2" source="SIZE2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FREE_CHAR" source="FREE_CHAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CARE_CODE" source="CARE_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BRAND_ID" source="BRAND_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FIBER_CODE1" source="FIBER_CODE1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FIBER_PART1" source="FIBER_PART1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FIBER_CODE2" source="FIBER_CODE2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FIBER_PART2" source="FIBER_PART2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FIBER_CODE3" source="FIBER_CODE3"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FIBER_PART3" source="FIBER_PART3"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FIBER_CODE4" source="FIBER_CODE4"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FIBER_PART4" source="FIBER_PART4"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RPA_WGH1" source="RPA_WGH1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RPA_WGH2" source="RPA_WGH2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RPA_WGH3" source="RPA_WGH3"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RPA_WGH4" source="RPA_WGH4"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FASHGRD" source="FASHGRD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZZDISMM" source="ZZDISMM"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="MatText_P">
+    <viewAttributes>
+      <viewAttribute id="MATNR"/>
+      <viewAttribute id="SPRAS"/>
+      <viewAttribute id="MaterialName"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="MATERIAL_TEXT">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MATNR" source="MATNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SPRAS" source="SPRAS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialName" source="TXTMD"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_1" joinType="textTable" languageColumn="SPRAS">
+    <viewAttributes>
+      <viewAttribute id="Material"/>
+      <viewAttribute id="MaterialType"/>
+      <viewAttribute id="MaterialGroup"/>
+      <viewAttribute id="MaterialBaseUnit"/>
+      <viewAttribute id="ProductHierarchy"/>
+      <viewAttribute id="MaterialCategory"/>
+      <viewAttribute id="MaterialName"/>
+    
+      <viewAttribute id="IndustrySector">
+        <descriptions defaultDescription="MBRSH"/>
+      </viewAttribute>
+      <viewAttribute id="BasicMaterial">
+        <descriptions defaultDescription="WRKST"/>
+      </viewAttribute>
+      <viewAttribute id="IndustryStandardName">
+        <descriptions defaultDescription="NORMT"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialWeightUnit">
+        <descriptions defaultDescription="GEWEI"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialNetWeight">
+        <descriptions defaultDescription="NTGEW"/>
+      </viewAttribute>
+      <viewAttribute id="MaterialExternalGroup">
+        <descriptions defaultDescription="EXTWG"/>
+      </viewAttribute>
+      <viewAttribute id="Division">
+        <descriptions defaultDescription="SPART"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="MatAttr_P">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Material" source="Material"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialType" source="MaterialType"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialGroup" source="MaterialGroup"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialBaseUnit" source="MaterialBaseUnit"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ProductHierarchy" source="ProductHierarchy"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialCategory" source="MaterialCategory"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="IndustrySector" source="MBRSH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BasicMaterial" source="WRKST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IndustryStandardName" source="NORMT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialWeightUnit" source="GEWEI"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialNetWeight" source="NTGEW"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialExternalGroup" source="EXTWG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Division" source="SPART"/>
+    </input>
+    <input node="MatText_P">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MaterialName" source="MaterialName"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Material" source="MATNR"/>
+    </input>
+    <joinAttribute name="Material"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="Material" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MATNR"/>
+      <keyMapping columnObjectName="Join_1" columnName="Material"/>
+    </attribute>
+    <attribute id="MaterialType" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MTART"/>
+      <keyMapping columnObjectName="Join_1" columnName="MaterialType"/>
+    </attribute>
+    <attribute id="MaterialGroup" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MATKL"/>
+      <keyMapping columnObjectName="Join_1" columnName="MaterialGroup"/>
+    </attribute>
+    <attribute id="MaterialBaseUnit" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MEINS"/>
+      <keyMapping columnObjectName="Join_1" columnName="MaterialBaseUnit"/>
+    </attribute>
+    <attribute id="ProductHierarchy" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRDHA"/>
+      <keyMapping columnObjectName="Join_1" columnName="ProductHierarchy"/>
+    </attribute>
+    <attribute id="MaterialCategory" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ATTYP"/>
+      <keyMapping columnObjectName="Join_1" columnName="MaterialCategory"/>
+    </attribute>
+    <attribute id="MaterialName" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TXTMD"/>
+      <keyMapping columnObjectName="Join_1" columnName="MaterialName"/>
+    </attribute>
+  
+    <attribute id="IndustrySector" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MBRSH"/>
+      <keyMapping columnObjectName="Join_1" columnName="IndustrySector"/>
+    </attribute>
+    <attribute id="BasicMaterial" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="WRKST"/>
+      <keyMapping columnObjectName="Join_1" columnName="BasicMaterial"/>
+    </attribute>
+    <attribute id="IndustryStandardName" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NORMT"/>
+      <keyMapping columnObjectName="Join_1" columnName="IndustryStandardName"/>
+    </attribute>
+    <attribute id="MaterialWeightUnit" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="GEWEI"/>
+      <keyMapping columnObjectName="Join_1" columnName="MaterialWeightUnit"/>
+    </attribute>
+    <attribute id="MaterialNetWeight" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NTGEW"/>
+      <keyMapping columnObjectName="Join_1" columnName="MaterialNetWeight"/>
+    </attribute>
+    <attribute id="MaterialExternalGroup" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EXTWG"/>
+      <keyMapping columnObjectName="Join_1" columnName="MaterialExternalGroup"/>
+    </attribute>
+    <attribute id="Division" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SPART"/>
+      <keyMapping columnObjectName="Join_1" columnName="Division"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="221.11302679000914" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="MatAttr_P" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="376.9999988079071"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="MatText_P" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="302.00000000000006" y="376.9999988079071"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="221.11302679000914" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="MatAttr_P" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="170"/>
+    </shape>
+    <shape modelObjectName="MatText_P" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="150"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
