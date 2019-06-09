@@ -1163,6 +1163,10 @@
       <calculatedViewAttribute id="MonthName" datatype="VARCHAR" length="13" expressionLanguage="SQL">
         <formula>MONTHNAME(&quot;InvoiceListBillingDate&quot;)</formula>
       </calculatedViewAttribute>
+    
+      <calculatedViewAttribute id="DAT" datatype="DATE" expressionLanguage="SQL">
+        <formula>TO_DATE(&quot;InvoiceListBillingDate&quot;)</formula>
+      </calculatedViewAttribute>
     </calculatedViewAttributes>
     <input node="Join_9">
       <mapping xsi:type="Calculation:AttributeMapping" target="InvoiceListBillingDate" source="InvoiceListBillingDate"/></input>
@@ -1516,6 +1520,11 @@
   
       <keyMapping columnObjectName="Join_10" columnName="MonthName"/>
   
+    </attribute>
+  
+    <attribute id="DAT" order="109" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DAT"/>
+      <keyMapping columnObjectName="Join_10" columnName="DAT"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
