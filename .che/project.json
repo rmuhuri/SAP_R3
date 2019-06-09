@@ -1,16 +1,1 @@
-{
-	"type": "mta",
-	"builders": {
-		"default": "mtabuilder",
-		"configs": {}
-	},
-	"runners": {
-		"configs": {}
-	},
-	"attributes": {
-		"sap.watt.common.setting": [
-			"{\"generation\":[{\"templateId\":\"hanatemplates.hcpmtaproject\",\"templateVersion\":\"1.0.0\",\"dateTimeStamp\":\"Sun, 09 Jun 2019 04:47:11 GMT\"},{\"templateId\":\"hanatemplates.hanadbproject\",\"templateVersion\":\"1.0.0\",\"dateTimeStamp\":\"Sun, 09 Jun 2019 04:47:12 GMT\"},{\"templateId\":\"mta.hdb.neo.project\",\"templateVersion\":\"1.0.0\",\"dateTimeStamp\":\"Sun, 09 Jun 2019 04:47:28 GMT\"}],\"translation\":{\"translationDomain\":\"\",\"supportedLanguages\":\"en,fr,de\",\"defaultLanguage\":\"en\",\"defaultI18NPropertyFile\":\"i18n.properties\",\"resourceModelName\":\"i18n\"},\"basevalidator\":{\"services\":{\"js\":\"jsValidator\",\"json\":\"jsonValidator\",\"xml\":\"xmlValidator\"}},\"hdbInactiveFiles\":{\"inactiveFileList\":[\"/SAP_R3/db/src/data/COUNTRY_TEXT.csv\",\"/SAP_R3/db/src/data/CUST_COMPC_ATTR.csv\",\"/SAP_R3/db/src/data/CUST_COMPC_ATTR.hdbtable\",\"/SAP_R3/db/src/data/CUST_COMPC_ATTR.hdbtabledata\",\"/SAP_R3/db/src/data/SALES_DOC_HDR.csv\",\"/SAP_R3/db/src/data/SALES_DOC_HDR.hdbtable\",\"/SAP_R3/db/src/data/SALES_DOC_HDR.hdbtabledata\"]}}"
-		]
-	},
-	"mixinTypes": []
-}
+{"type":"mta","builders":{"default":"mtabuilder","configs":{}},"runners":{"configs":{}},"attributes":{"sap.watt.common.setting":["{\"generation\":[{\"templateId\":\"hanatemplates.hcpmtaproject\",\"templateVersion\":\"1.0.0\",\"dateTimeStamp\":\"Sun, 09 Jun 2019 04:47:11 GMT\"},{\"templateId\":\"hanatemplates.hanadbproject\",\"templateVersion\":\"1.0.0\",\"dateTimeStamp\":\"Sun, 09 Jun 2019 04:47:12 GMT\"},{\"templateId\":\"mta.hdb.neo.project\",\"templateVersion\":\"1.0.0\",\"dateTimeStamp\":\"Sun, 09 Jun 2019 04:47:28 GMT\"}],\"translation\":{\"translationDomain\":\"\",\"supportedLanguages\":\"en,fr,de\",\"defaultLanguage\":\"en\",\"defaultI18NPropertyFile\":\"i18n.properties\",\"resourceModelName\":\"i18n\"},\"basevalidator\":{\"services\":{\"js\":\"jsValidator\",\"json\":\"jsonValidator\",\"xml\":\"xmlValidator\"}},\"hdbInactiveFiles\":{\"inactiveFileList\":[\"/SAP_R3/db/src/data/COUNTRY_TEXT.csv\"]}}"]},"mixinTypes":[]}
