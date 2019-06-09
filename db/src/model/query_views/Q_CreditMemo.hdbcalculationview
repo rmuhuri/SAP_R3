@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" id="Q_BillingDoc" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
-<descriptions defaultDescription="Q_BillingDoc"/>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" id="Q_CreditMemo" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="Q_CreditMemo "/>
 <localVariables/>
 <variableMappings/>
 <dataSources>
@@ -39,7 +39,7 @@
   </DataSource>
 </dataSources>
 <calculationViews>
-  <calculationView xsi:type="Calculation:ProjectionView" id="BillingHdr_P">
+  <calculationView xsi:type="Calculation:ProjectionView" id="BillingHdr_P" filterExpressionLanguage="SQL">
     <viewAttributes>
       <viewAttribute id="BillingDocument"/>
       <viewAttribute id="CompanyCode"/>
@@ -64,8 +64,10 @@
       <viewAttribute id="TransactionCurrency"/></viewAttributes>
     <calculatedViewAttributes/>
     <input node="B_BillingHdr"/>
+  
+    <filter>&quot;SDDocumentCategory&quot;='O'</filter>
   </calculationView>
-  <calculationView xsi:type="Calculation:ProjectionView" id="BillingItem_P">
+  <calculationView xsi:type="Calculation:ProjectionView" id="BillingItem_P" filterExpressionLanguage="SQL">
     <viewAttributes>
       <viewAttribute id="HeaderBillingDocument"/>
       <viewAttribute id="BillingDocumentItem"/>
@@ -112,7 +114,7 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="HeaderBillingDocument" source="BillingDocument"/>
     </input>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinType="leftOuter">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinType="inner">
     <viewAttributes>
       <viewAttribute id="BillingDocument"/>
       <viewAttribute id="BillingDocumentItem"/>
@@ -1180,11 +1182,11 @@
 </calculationViews>
 <logicalModel id="Join_10">
   <attributes>
-    <attribute id="BillingDocument" order="1" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CreditMemo" order="1" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Billing Document"/>
       <keyMapping columnObjectName="Join_10" columnName="BillingDocument"/>
     </attribute>
-    <attribute id="BillingDocumentItem" order="2" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CreditMemoItem" order="2" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Billing Document Item"/>
       <keyMapping columnObjectName="Join_10" columnName="BillingDocumentItem"/>
     </attribute>
@@ -1268,15 +1270,15 @@
       <descriptions defaultDescription="Created By User"/>
       <keyMapping columnObjectName="Join_10" columnName="CreatedByUser"/>
     </attribute>
-    <attribute id="BillingDocumentType" order="45" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CreditMemoType" order="45" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Billing Document Type"/>
       <keyMapping columnObjectName="Join_10" columnName="BillingDocumentType"/>
     </attribute>
-    <attribute id="InvoiceListBillingDate" order="46" displayAttribute="false" attributeHierarchyActive="false" semanticType="date">
+    <attribute id="CreditMemoDate" order="46" displayAttribute="false" attributeHierarchyActive="false" semanticType="date">
       <descriptions defaultDescription="Billing Date"/>
       <keyMapping columnObjectName="Join_10" columnName="InvoiceListBillingDate"/>
     </attribute>
-    <attribute id="BillingDocumentCategory" order="47" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CreditMemoCategory" order="47" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Billing Document Category"/>
       <keyMapping columnObjectName="Join_10" columnName="BillingDocumentCategory"/>
     </attribute>
@@ -1488,7 +1490,7 @@
       <descriptions defaultDescription="Month"/>
       <keyMapping columnObjectName="Join_10" columnName="MONTH"/>
     </attribute>
-    <attribute id="WEEK" order="101" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="Week" order="101" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Week"/>
       <keyMapping columnObjectName="Join_10" columnName="WEEK"/>
     </attribute>
@@ -1500,7 +1502,7 @@
       <descriptions defaultDescription="DAY_OF_WEEK"/>
       <keyMapping columnObjectName="Join_10" columnName="DAY_OF_WEEK"/>
     </attribute>
-    <attribute id="DAY" order="104" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="Day" order="104" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Day"/>
       <keyMapping columnObjectName="Join_10" columnName="DAY"/>
     </attribute>
@@ -1633,7 +1635,7 @@
       <attributeRef xsi:type="DataFoundation:Attribute">Year</attributeRef>
       <attributeRef xsi:type="DataFoundation:Attribute">Quarter</attributeRef>
       <attributeRef xsi:type="DataFoundation:Attribute">MonthName</attributeRef>
-      <attributeRef xsi:type="DataFoundation:Attribute">DAY</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">Day</attributeRef>
       <hierarchies>
         <hierarchy xsi:type="Dimension:LeveledHierarchy" id="Time_Hierarchy" aggregateAllNodes="false" orphanedNodesHandling="ROOT_NODES" rootNodeVisibility="DO_NOT_ADD_ROOT_NODE" withRootNode="false" nodeStyle="NAME_PATH_ENFORCED" cacheEnabled="true" cycleHandling="BREAKUP" emptyValueIsNull="true">
           <descriptions defaultDescription="Time Hierarchy"/>
@@ -1642,7 +1644,7 @@
             <level levelAttribute="Year" levelType="MDLEVEL_TYPE_TIME_YEARS" order="1" orderAttribute="Year" sortDirection="ASC"/>
             <level levelAttribute="Quarter" levelType="MDLEVEL_TYPE_TIME_QUARTERS" order="2" orderAttribute="Quarter" sortDirection="ASC"/>
             <level levelAttribute="MonthName" levelType="MDLEVEL_TYPE_TIME_MONTHS" order="3" orderAttribute="Month" sortDirection="ASC"/>
-            <level levelAttribute="DAY" levelType="MDLEVEL_TYPE_TIME_DAYS" order="4" orderAttribute="DAY" sortDirection="ASC"/>
+            <level levelAttribute="Day" levelType="MDLEVEL_TYPE_TIME_DAYS" order="4" orderAttribute="Day" sortDirection="ASC"/>
           </levels>
         </hierarchy>
       </hierarchies>
