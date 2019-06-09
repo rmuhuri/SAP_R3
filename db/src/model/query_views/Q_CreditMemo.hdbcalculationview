@@ -64,10 +64,9 @@
       <viewAttribute id="TransactionCurrency"/></viewAttributes>
     <calculatedViewAttributes/>
     <input node="B_BillingHdr"/>
-  
     <filter>&quot;SDDocumentCategory&quot;='O'</filter>
   </calculationView>
-  <calculationView xsi:type="Calculation:ProjectionView" id="BillingItem_P" filterExpressionLanguage="SQL">
+  <calculationView xsi:type="Calculation:ProjectionView" id="BillingItem_P">
     <viewAttributes>
       <viewAttribute id="HeaderBillingDocument"/>
       <viewAttribute id="BillingDocumentItem"/>
@@ -1628,7 +1627,12 @@
       <measureMapping columnObjectName="Join_10" columnName="AccountingExchangeRate"/>
     </measure>
   </baseMeasures>
-  <calculatedMeasures/>
+  <calculatedMeasures>
+    <measure id="CreditAmount" order="110" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="15" scale="2" expressionLanguage="SQL">
+      <descriptions defaultDescription="Credit Amount"/>
+      <formula>-1.0 * &quot;ItemNetAmountOfBillingDoc&quot;</formula>
+    </measure>
+  </calculatedMeasures>
   <restrictedMeasures/>
   <localDimensions>
     <localDimension id="Time_Hierarchy">
