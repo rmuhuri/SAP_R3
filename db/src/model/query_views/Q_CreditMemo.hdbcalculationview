@@ -1628,7 +1628,7 @@
     </measure>
   </baseMeasures>
   <calculatedMeasures>
-    <measure id="CreditAmount" order="110" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="15" scale="2" expressionLanguage="SQL">
+    <measure id="CreditAmount" order="110" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="15" scale="2" expressionLanguage="SQL" engineAggregation="sum" aggregatable="true">
       <descriptions defaultDescription="Credit Amount"/>
       <formula>-1.0 * &quot;ItemNetAmountOfBillingDoc&quot;</formula>
     </measure>
