@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="Q_PurchaseOrderDetails" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" id="Q_PurchaseOrderDetails" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
 <descriptions defaultDescription="Purchase Order Details"/>
 <localVariables/>
 <variableMappings/>
@@ -631,7 +631,27 @@
       <keyMapping columnObjectName="Join_5" columnName="CC_PODocumentDate"/>
     </attribute>
   </attributes>
-  <calculatedAttributes/>
+  <calculatedAttributes>
+    <calculatedAttribute id="Month" order="33" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Month"/>
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>monthname(&quot;CC_PODocumentDate&quot;)</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+    <calculatedAttribute id="Year" order="34" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Year"/>
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>year(&quot;CC_PODocumentDate&quot;)</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+  
+    <calculatedAttribute id="Quarter" order="35" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Quarter"/>
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>QUARTER(&quot;CC_PODocumentDate&quot;)</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+  </calculatedAttributes>
   <baseMeasures>
     <measure id="POQuantity" order="10" aggregationType="sum" measureType="simple">
       <descriptions defaultDescription="PO Quantity"/>
@@ -669,7 +689,24 @@
     </measure>
   </calculatedMeasures>
   <restrictedMeasures/>
-  <localDimensions/>
+  <localDimensions>
+    <localDimension id="Period_Hier">
+      <attributeRef xsi:type="DataFoundation:Attribute">Year</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">Quarter</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">Month</attributeRef>
+      <hierarchies>
+        <hierarchy xsi:type="Dimension:LeveledHierarchy" id="Period_Hier" aggregateAllNodes="false" orphanedNodesHandling="ROOT_NODES" rootNodeVisibility="DO_NOT_ADD_ROOT_NODE" withRootNode="false" nodeStyle="NAME_PATH_ENFORCED" cacheEnabled="true" cycleHandling="BREAKUP" emptyValueIsNull="true">
+          <descriptions defaultDescription="Period"/>
+          <unassignedMemberProperties mode="FALSE"/>
+          <levels>
+            <level levelAttribute="Year" levelType="MDLEVEL_TYPE_TIME_YEARS" order="1" orderAttribute="Year" sortDirection="ASC"/>
+            <level levelAttribute="Quarter" levelType="MDLEVEL_TYPE_TIME_QUARTERS" order="2" orderAttribute="Quarter" sortDirection="ASC"/>
+            <level levelAttribute="Month" levelType="MDLEVEL_TYPE_TIME_MONTHS" order="3" orderAttribute="Month" sortDirection="ASC"/>
+          </levels>
+        </hierarchy>
+      </hierarchies>
+    </localDimension>
+  </localDimensions>
 </logicalModel>
 <layout>
   <shapes>

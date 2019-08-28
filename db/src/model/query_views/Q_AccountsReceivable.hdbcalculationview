@@ -450,7 +450,7 @@ if(int(&quot;CC_Arrears&quot;)&lt;=0,'0 - 30',' ')))))))))</formula>
       <keyMapping columnObjectName="Join_3" columnName="CC_Arrears"/>
   
     </attribute>
-    <attribute id="CC_Aging" order="31" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CC_Aging" order="39" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CC_Aging"/>
       <keyMapping columnObjectName="Join_3" columnName="CC_Aging"/>
     </attribute>
@@ -480,14 +480,10 @@ if(int(&quot;CC_Arrears&quot;)&lt;=0,'0 - 30',' ')))))))))</formula>
   
     </calculatedAttribute>
   
-    <calculatedAttribute id="CC_AgingDate" order="32" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
-  
+    <calculatedAttribute id="CC_AgingDate" order="40" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <keyCalculation datatype="DATE" expressionLanguage="SQL">
-  
         <formula>'$$IP_AgingDate$$'</formula>
-  
       </keyCalculation>
-  
     </calculatedAttribute>
   </calculatedAttributes>
   <baseMeasures>
@@ -517,7 +513,80 @@ if(int(&quot;CC_Arrears&quot;)&lt;=0,'0 - 30',' ')))))))))</formula>
     </measure>
   </baseMeasures>
   <calculatedMeasures/>
-  <restrictedMeasures/>
+  <restrictedMeasures>
+    <measure id="RES_0_30" order="31" aggregationType="sum" datatype="DECIMAL" length="13" scale="2" baseMeasure="Amountinforeigncurrency">
+      <descriptions defaultDescription="0 to 30"/>
+      <restriction logicalOperator="AND">
+        <filter xsi:type="Privilege:AttributeFilter" attributeName="CC_Aging">
+          <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="0 - 30"/>
+        </filter>
+        <attributeName>CC_Aging</attributeName>
+      </restriction>
+    </measure>
+    <measure id="RES_31-60" order="32" aggregationType="sum" datatype="DECIMAL" length="13" scale="2" baseMeasure="Amountinforeigncurrency">
+      <descriptions defaultDescription="31 - 60"/>
+      <restriction logicalOperator="AND">
+        <filter xsi:type="Privilege:AttributeFilter" attributeName="CC_Aging">
+          <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="31 - 60"/>
+        </filter>
+        <attributeName>CC_Aging</attributeName>
+      </restriction>
+    </measure>
+    <measure id="RES_61-90" order="33" aggregationType="sum" datatype="DECIMAL" length="13" scale="2" baseMeasure="Amountinforeigncurrency">
+      <descriptions defaultDescription="61 - 90"/>
+      <restriction logicalOperator="AND">
+        <filter xsi:type="Privilege:AttributeFilter" attributeName="CC_Aging">
+          <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="61 - 90"/>
+        </filter>
+        <attributeName>CC_Aging</attributeName>
+      </restriction>
+    </measure>
+    <measure id="RES_91-120" order="34" aggregationType="sum" datatype="DECIMAL" length="13" scale="2" baseMeasure="Amountinforeigncurrency">
+      <descriptions defaultDescription="91 - 120"/>
+      <restriction logicalOperator="AND">
+        <filter xsi:type="Privilege:AttributeFilter" attributeName="CC_Aging">
+          <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="91 - 120"/>
+        </filter>
+        <attributeName>CC_Aging</attributeName>
+      </restriction>
+    </measure>
+    <measure id="RES_121-150" order="35" aggregationType="sum" datatype="DECIMAL" length="13" scale="2" baseMeasure="Amountinforeigncurrency">
+      <descriptions defaultDescription="121 - 150"/>
+      <restriction logicalOperator="AND">
+        <filter xsi:type="Privilege:AttributeFilter" attributeName="CC_Aging">
+          <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="121 - 150"/>
+        </filter>
+        <attributeName>CC_Aging</attributeName>
+      </restriction>
+    </measure>
+    <measure id="RES_151-180" order="36" aggregationType="sum" datatype="DECIMAL" length="13" scale="2" baseMeasure="Amountinforeigncurrency">
+      <descriptions defaultDescription="151 - 180"/>
+      <restriction logicalOperator="AND">
+        <filter xsi:type="Privilege:AttributeFilter" attributeName="CC_Aging">
+          <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="151 - 180"/>
+        </filter>
+        <attributeName>CC_Aging</attributeName>
+      </restriction>
+    </measure>
+    <measure id="RES_181-210" order="37" aggregationType="sum" datatype="DECIMAL" length="13" scale="2" baseMeasure="Amountinforeigncurrency">
+      <descriptions defaultDescription="181 - 210"/>
+      <restriction logicalOperator="AND">
+        <filter xsi:type="Privilege:AttributeFilter" attributeName="CC_Aging">
+          <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="181 - 210"/>
+        </filter>
+        <attributeName>CC_Aging</attributeName>
+      </restriction>
+    </measure>
+    <measure id="RES_211-99999" order="38" aggregationType="sum" datatype="DECIMAL" length="13" scale="2" baseMeasure="Amountinforeigncurrency">
+      <descriptions defaultDescription="211 - 99999"/>
+      <restriction logicalOperator="AND">
+        <filter xsi:type="Privilege:AttributeFilter" attributeName="CC_Aging">
+          <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="211 - 99999"/>
+        </filter>
+        <attributeName>CC_Aging</attributeName>
+      </restriction>
+    </measure>
+  </restrictedMeasures>
   <localDimensions/>
 </logicalModel>
 <layout>
